@@ -1,0 +1,40 @@
+<script setup lang="ts">
+</script>
+
+<template>
+  <nav class="icb-nav">
+    <img src="@/assets/logo.svg" height="50" alt="">
+    <ul>
+      <li>Inicio</li>
+      <li>Visítanos</li>
+      <li>Nosotros</li>
+      <li>Contacto</li>
+    </ul>
+  </nav>
+</template>
+
+<style scoped lang="scss">
+.icb-nav {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 56px;
+    list-style: none;
+    li {
+      font-size: 24px;
+      line-height: 26.4px;
+      font-weight: 600;
+    }
+  }
+}
+</style>
+
+
