@@ -25,7 +25,7 @@
       font-size: 22px;
       line-height: 24px;
       color: #2C3135;
-      font-weight: 800;
+      font-weight: 700;
       font-family: 'Montserrat';
     }
   }

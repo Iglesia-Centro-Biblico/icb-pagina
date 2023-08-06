@@ -1,0 +1,39 @@
+$montserrat-path: '../fonts/Montserrat/Montserrat';
+$montserrat-list: (
+  "Black": 900,
+  "ExtraBold": 800,
+  "Bold": 700,
+  "SemiBold": 600,
+  "Medium": 500,
+  "Regular": 400,
+  "Light": 300,
+  "ExtraLight": 200,
+  "Thin": 100,
+);
+$montserrat-italic-list: (
+  "BlackItalic": 900,
+  "ExtraBoldItalic": 800,
+  "BoldItalic": 700,
+  "SemiBoldItalic": 600,
+  "MediumItalic": 500,
+  "Italic": 400,
+  "LightItalic": 300,
+  "ExtraLightItalic": 200,
+  "ThinItalic": 100,
+);
+
+@each $name, $weight in $montserrat-list {
+  @font-face {
+    font-family: 'Montserrat';
+    font-weight: $weight;
+    src: url("#{$montserrat-path}-#{$name}.ttf") format("truetype");
+  }
+}
+
+@each $name, $weight in $montserrat-italic-list {
+  @font-face {
+    font-family: 'Montserrat-italic';
+    font-weight: $weight;
+    src: url("#{$montserrat-path}-#{$name}.ttf") format("truetype");
+  }
+}
