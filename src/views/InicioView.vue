@@ -3,7 +3,7 @@
 
 <template>
   <main class="icb-inicio">
-    <img class="icb-inicio__biblia-fondo" src="@/assets/images/bible-bg.jpg" alt="Biblia de fondo">
+    <img class="icb-inicio__biblia-fondo" src="@/assets/images/sm-bible-bg.png" alt="Biblia de fondo">
     <div class="icb-inicio__bienvenida">
       <h2>Bienvenidos a la</h2>
       <h1>Iglesia Centro Bíblico</h1>
@@ -14,16 +14,16 @@
 <style scoped lang="scss">
 .icb-inicio {
   &__biblia-fondo {
-    width: 100%;
+    width: 100vw;
   }
   &__bienvenida {
     position: absolute;
-    top: 40%;
-    left: 60px;
+    top: 20%;
+    left: 30px;
     transform: translateY(-50%);
     h2, h1 {
-      font-size: 70px;
-      line-height: 85px;
+      font-size: 22px;
+      line-height: 24px;
       color: #2C3135;
       font-weight: 800;
       font-family: 'Montserrat';
