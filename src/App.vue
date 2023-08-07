@@ -4,13 +4,16 @@ import Navigation from '@/components/navigation/Navigation.vue';
 
 <template>
   <header>
-    <div>
-      <Navigation/>
-    </div>
+    <Navigation/>
   </header>
-
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
 </template>
 
 <style scoped lang="scss">
+main {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 </style>

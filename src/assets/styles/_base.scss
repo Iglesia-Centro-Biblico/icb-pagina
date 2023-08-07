@@ -24,7 +24,7 @@ body {
   @include q-small {
     transition: all 0.3s ease-in-out;
     &.menu-open {
-      transform: translateX(-280px) !important;
+      transform: translateX(-285px) !important;
       
     }
   }

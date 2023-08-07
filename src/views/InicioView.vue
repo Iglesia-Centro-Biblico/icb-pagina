@@ -6,9 +6,12 @@
     <div class="icb-inicio__bienvenida">
       <h2 class="icb-inicio__bienvenida-title">Bienvenidos a la</h2>
       <h1 class="icb-inicio__bienvenida-title">Iglesia Centro Bíblico</h1>
-      <button class="icb-inicio__bienvenida-cta btn-primary">Visítanos</button>
+      <button class="icb-inicio__bienvenida-cta">Visítanos</button>
     </div>
   </main>
+  <div id="visitanos" class="icb-visitanos">
+
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -28,9 +31,10 @@
     position: absolute;
     top: 125px;
     left: 30px;
+    z-index: 0;
     &-title {
-      font-size: 22px;
-      line-height: 24px;
+      font-size: 24px;
+      line-height: 26px;
       color: #2C3135;
       font-weight: 700;
       font-family: 'Montserrat';
@@ -52,18 +56,15 @@
       }
     }
 
-    .btn-primary {
+    &-cta {
       background-color: $primary;
       color: $white;
       border: none;
-      padding: 6px 10px;
+      padding: 8px 12px;
       border-radius: 4px;
       font-family: 'Montserrat';
-      font-size: 12px;
+      font-size: 18px;
       font-weight: 600;
-    }
-
-    &-cta {
       margin-top: 16px;
       @include q-medium {
         padding: 16px 38px !important;
@@ -71,5 +72,8 @@
       }
     }
   }
+}
+.icb-visitanos {
+  height: 100vh;
 }
 </style>

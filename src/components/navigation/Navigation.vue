@@ -1,8 +1,9 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, onMounted, onUnmounted } from 'vue';
   import type { Ref } from 'vue';
   
   let isOpen: Ref<boolean> = ref(false);
+  let hasScrolled: Ref<boolean> = ref(false);
   const pages: Ref<{ name: string, hash: string }[]> = ref([
     { name: 'Inicio', hash: '' },
     { name: 'Visítanos', hash: '' },
@@ -15,12 +16,22 @@
     
     document.body.classList[isOpen.value ? 'add' : 'remove']("menu-open");
   }
+  function scrollHandler(e) {
+    hasScrolled.value = window.scrollY > 0;
+  }
+  onMounted(() => {
+    window.addEventListener('scroll', scrollHandler);
+  });
+  onUnmounted(() => {
+    window.removeEventListener('scroll', scrollHandler);
+  });
 </script>
 
 <template>
-  <div class="icb-navbar">
+  <div :class="['icb-navbar', { 'has-scrolled': hasScrolled }]">
     <img class="icb-navbar__logo" src="@/assets/logos/logo.svg" height="50" alt="Logo">
-    <img class="icb-navbar__logo-completo" src="@/assets/logos/logo-complete.svg" height="50" alt="Logo Completo">
+    <img v-if="!hasScrolled" class="icb-navbar__logo-completo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo">
+    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco">
     <div :class="['icb-navbar__menu', { 'is-open': isOpen }]" @click="toggle">
       <div class="icb-navbar__menu-line"></div>
       <div class="icb-navbar__menu-line"></div>
@@ -28,13 +39,13 @@
     </div>
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
-        <li v-for="page in pages">{{ page.name }}</li>
+        <li v-for="page in pages" :key="page.name">{{ page.name }}</li>
       </ul>
     </nav>
   </div>
   <nav :class="['icb-mobile-menu', { 'is-open': isOpen }]">
     <ul class="icb-mobile-menu__list">
-      <li v-for="page in pages">
+      <li v-for="page in pages" :key="`mobile-${page.name}`">
         <a href="">{{  page.name  }}</a>
       </li>
     </ul>
@@ -44,6 +55,7 @@
 
 <style scoped lang="scss">
 .icb-navbar {
+  $self: &;
   position: fixed;
   width: 100%;
   height: 80px;
@@ -51,12 +63,25 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
+  &.has-scrolled {
+    background-color: $secondary;
+    #{ $self }__nav {
+      li {
+        color: $white;
+      }
+    }
+    #{ $self }__menu {
+      &-line {
+        background-color: $white !important;
+      }
+    }
+  }
   &__logo {
     @include q-medium {
       display: none;
     }
   }
-  &__logo-completo {
+  &__logo-completo, &__logo-completo-blanco {
     @include q-small {
       display: none;
     }
@@ -111,10 +136,10 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  right: -280px;
+  right: -285px;
   height: 100vh;
   width: 285px;
-  z-index: 2;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
