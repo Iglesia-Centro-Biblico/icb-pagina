@@ -3,8 +3,8 @@
 
 <template>
   <nav class="icb-nav">
-    <img src="@/assets/logo.svg" height="50" alt="">
-    <div class="icb-nav__menu" @click="">
+    <img src="@/assets/logos/logo-complete.svg" height="50" alt="">
+    <div class="icb-nav__menu">
       <div class="icb-nav__menu-line"></div>
       <div class="icb-nav__menu-line"></div>
       <div class="icb-nav__menu-line"></div>
