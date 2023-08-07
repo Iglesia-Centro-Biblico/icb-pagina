@@ -4,13 +4,13 @@ import Navigation from '@/components/navigation/Navigation.vue';
 
 <template>
   <header>
-    <div class="grid">
-      <Navigation class="col-md-12"/>
+    <div>
+      <Navigation/>
     </div>
   </header>
 
   <RouterView />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 </style>

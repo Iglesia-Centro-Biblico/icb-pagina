@@ -1,0 +1,18 @@
+$small: 481px;
+$medium: 769px;
+
+@mixin q-small {
+    @media screen and (max-width: #{$small}) {
+        @content;
+    }
+}
+@mixin q-medium {
+    @media screen and (min-width: #{$small}) {
+        @content;
+    }
+}
+@mixin q-large {
+    @media screen and (min-width: #{$medium}) {
+        @content;
+    }
+}

@@ -19,6 +19,9 @@
   background-size: cover;
   background-attachment: fixed;
   // Use mixin to set breakpoints
+  @include q-large {
+    background-position: 100% 30%;
+  }
 
   &__bienvenida {
     position: absolute;
