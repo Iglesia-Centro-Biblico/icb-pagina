@@ -3,7 +3,7 @@
   import type { Ref } from 'vue';
   
   let isOpen: Ref<boolean> = ref(false);
-  const pages: Ref<{ name: 'string', hash: 'string' }[]> = ref([
+  const pages: Ref<{ name: string, hash: string }[]> = ref([
     { name: 'Inicio', hash: '' },
     { name: 'Visítanos', hash: '' },
     { name: 'Nosotros', hash: '' },
