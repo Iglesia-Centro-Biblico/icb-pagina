@@ -6,6 +6,7 @@
     <div class="icb-inicio__bienvenida">
       <h2 class="icb-inicio__bienvenida-title">Bienvenidos a la</h2>
       <h1 class="icb-inicio__bienvenida-title">Iglesia Centro Bíblico</h1>
+      <button class="icb-inicio__bienvenida-cta btn-primary">Visítanos</button>
     </div>
   </main>
 </template>
@@ -48,6 +49,25 @@
       &-title {
         font-size: 70px;
         line-height: 1.2;
+      }
+    }
+
+    .btn-primary {
+      background-color: $primary;
+      color: $white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-family: 'Montserrat';
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    &-cta {
+      margin-top: 16px;
+      @include q-medium {
+        padding: 16px 38px !important;
+        font-size: 36px !important;
       }
     }
   }
