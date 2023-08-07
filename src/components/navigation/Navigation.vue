@@ -1,12 +1,13 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  import type { Ref } from 'vue';
   
-  let isOpen: boolean = ref(false);
-  const pages: string[] = ref([
-    { name: 'Inicio', query: { path: '/' } },
-    { name: 'Visítanos', query: { hash: 'visitanos' } },
-    { name: 'Nosotros', query: { hash: 'nosotros' } },
-    { name: 'Contacto', query: { hash: 'Contacto' } },
+  let isOpen: Ref<boolean> = ref(false);
+  const pages: Ref<{ name: 'string', hash: 'string' }[]> = ref([
+    { name: 'Inicio', hash: '' },
+    { name: 'Visítanos', hash: '' },
+    { name: 'Nosotros', hash: '' },
+    { name: 'Contacto', hash: '' },
   ]);
 
   function toggle() {
