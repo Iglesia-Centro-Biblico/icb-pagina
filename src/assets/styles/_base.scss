@@ -21,11 +21,4 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @include q-small {
-    transition: all 0.3s ease-in-out;
-    &.menu-open {
-      transform: translateX(-285px) !important;
-      
-    }
-  }
 }

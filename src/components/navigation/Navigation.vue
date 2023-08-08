@@ -1,34 +1,5 @@
-<script setup lang="ts">
-  import { ref, onMounted, onUnmounted } from 'vue';
-  import type { Ref } from 'vue';
-  
-  let isOpen: Ref<boolean> = ref(false);
-  let hasScrolled: Ref<boolean> = ref(false);
-  const pages: Ref<{ name: string, hash: string }[]> = ref([
-    { name: 'Inicio', hash: '' },
-    { name: 'Visítanos', hash: '' },
-    { name: 'Nosotros', hash: '' },
-    { name: 'Contacto', hash: '' },
-  ]);
-
-  function toggle() {
-    isOpen.value = !isOpen.value;
-    
-    document.body.classList[isOpen.value ? 'add' : 'remove']("menu-open");
-  }
-  function scrollHandler(e) {
-    hasScrolled.value = window.scrollY > 0;
-  }
-  onMounted(() => {
-    window.addEventListener('scroll', scrollHandler);
-  });
-  onUnmounted(() => {
-    window.removeEventListener('scroll', scrollHandler);
-  });
-</script>
-
 <template>
-  <div :class="['icb-navbar', { 'has-scrolled': hasScrolled }]">
+  <div :class="['icb-navbar', { 'has-scrolled': hasScrolled, 'is-open': isOpen }]">
     <img class="icb-navbar__logo" src="@/assets/logos/logo.svg" height="50" alt="Logo">
     <img v-if="!hasScrolled" class="icb-navbar__logo-completo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo">
     <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco">
@@ -43,15 +14,45 @@
       </ul>
     </nav>
   </div>
-  <nav :class="['icb-mobile-menu', { 'is-open': isOpen }]">
+  <div :class="['icb-mobile-menu', { 'is-open': isOpen }]">
     <ul class="icb-mobile-menu__list">
       <li v-for="page in pages" :key="`mobile-${page.name}`">
         <a href="">{{  page.name  }}</a>
       </li>
     </ul>
     <img class="icb-mobile-mone__logo" src="@/assets/logos/logo-completo-blanco.svg" height="70" alt="Logo Completo">
-  </nav>
+  </div>
 </template>
+
+<script setup lang="ts">
+  import { ref, onMounted, onUnmounted } from 'vue';
+  import type { Ref } from 'vue';
+  
+  let isOpen: Ref<boolean> = ref(false);
+  let hasScrolled: Ref<boolean> = ref(false);
+
+  const pages: Ref<{ name: string, hash: string }[]> = ref([
+    { name: 'Inicio', hash: '' },
+    { name: 'Visítanos', hash: '' },
+    { name: 'Nosotros', hash: '' },
+    { name: 'Contacto', hash: '' },
+  ]);
+
+  const toggle = () => {
+    isOpen.value = !isOpen.value;
+    const content = document.getElementById('app-content'); 
+    content?.classList[isOpen.value ? 'add' : 'remove']("menu-open");
+  };
+  const scrollHandler = () => {
+    hasScrolled.value = window.scrollY > 0;
+  };
+  onMounted(() => {
+    window.addEventListener('scroll', scrollHandler);
+  });
+  onUnmounted(() => {
+    window.removeEventListener('scroll', scrollHandler);
+  });
+</script>
 
 <style scoped lang="scss">
 .icb-navbar {
@@ -63,6 +64,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
+  z-index: 100;
+  @include q-small {
+    transition: all 0.3s ease-in-out;
+    &.is-open {
+      transform: translateX(-285px) !important;
+    }
+  }
   &.has-scrolled {
     background-color: $secondary;
     #{ $self }__nav {
@@ -150,7 +158,7 @@
   @include q-small {
     transition: all 0.3s ease-in-out;
     &.is-open {
-      transform: translateX(0);
+      transform: translateX(-285px) !important;
     }
   }
   &__list {

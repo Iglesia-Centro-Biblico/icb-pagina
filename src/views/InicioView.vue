@@ -2,15 +2,12 @@
 </script>
 
 <template>
-  <main class="icb-inicio">
+  <div class="icb-inicio">
     <div class="icb-inicio__bienvenida">
       <h2 class="icb-inicio__bienvenida-title">Bienvenidos a la</h2>
       <h1 class="icb-inicio__bienvenida-title">Iglesia Centro Bíblico</h1>
       <button class="icb-inicio__bienvenida-cta">Visítanos</button>
     </div>
-  </main>
-  <div id="visitanos" class="icb-visitanos">
-
   </div>
 </template>
 
@@ -72,8 +69,5 @@
       }
     }
   }
-}
-.icb-visitanos {
-  height: 100vh;
 }
 </style>
