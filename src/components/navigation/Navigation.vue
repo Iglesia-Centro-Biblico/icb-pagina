@@ -1,5 +1,6 @@
 <template>
   <div :class="['icb-navbar', { 'has-scrolled': hasScrolled, 'is-open': isOpen }]">
+    <div class="icb-navbar__progress-bar" :style="{ width: `${scrollPercentage}%` }"></div>
     <img class="icb-navbar__logo" src="@/assets/logos/logo.svg" height="50" alt="Logo">
     <img v-if="!hasScrolled" class="icb-navbar__logo-completo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo">
     <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco">
@@ -30,6 +31,7 @@
   
   let isOpen: Ref<boolean> = ref(false);
   let hasScrolled: Ref<boolean> = ref(false);
+  let scrollPercentage: Ref<number> = ref(0);
 
   const pages: Ref<{ name: string, hash: string }[]> = ref([
     { name: 'Inicio', hash: '' },
@@ -45,6 +47,8 @@
   };
   const scrollHandler = () => {
     hasScrolled.value = window.scrollY > 0;
+    const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
+    scrollPercentage.value = (scrollTop * 100) / (scrollHeight - clientHeight);
   };
   onMounted(() => {
     window.addEventListener('scroll', scrollHandler);
@@ -83,6 +87,15 @@
         background-color: $white !important;
       }
     }
+  }
+  &__progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 3px;
+    background-color: $primary;
   }
   &__logo {
     @include q-medium {

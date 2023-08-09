@@ -9,6 +9,7 @@
       <button class="icb-inicio__bienvenida-cta">Visítanos</button>
     </div>
   </div>
+  <div style="height: 400px"></div>
 </template>
 
 <style scoped lang="scss">
