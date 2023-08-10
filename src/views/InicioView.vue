@@ -1,16 +1,33 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <div class="icb-inicio">
+  <div id="inicio" class="icb-inicio">
     <div class="icb-inicio__bienvenida">
       <h2 class="icb-inicio__bienvenida-title">Bienvenidos a la</h2>
       <h1 class="icb-inicio__bienvenida-title">Iglesia Centro Bíblico</h1>
-      <button class="icb-inicio__bienvenida-cta">Visítanos</button>
+      <button class="icb-inicio__bienvenida-cta" @click="redirect('visitanos')">Visítanos</button>
     </div>
   </div>
-  <div style="height: 400px"></div>
+  <div id="visitanos" class="icb-visitanos">
+    <h2 class="icb-visitanos__titulo primary-underline">Reuniones</h2>
+    <div class="icb-visitanos__content">
+      <h3 class="icb-visitanos__content-dia">Domingos</h3>
+      <h4 class="icb-visitanos__content-reunion">Escuela Dominical</h4>
+      <p class="icb-visitanos__content-hora">9:30 - 10:15 hrs</p>
+      <h4 class="icb-visitanos__content-reunion">Culto de Adoración</h4>
+      <p class="icb-visitanos__content-hora">9:30 - 10:15 hrs</p>
+    </div>
+    <div class="icb-visitanos__content">
+      <h3 class="icb-visitanos__content-dia">Miercoles</h3>
+      <h4 class="icb-visitanos__content-reunion">Reunión de Oración</h4>
+      <p class="icb-visitanos__content-hora">19:00 - 20:30 hrs</p>
+    </div>
+  </div>
 </template>
+<script setup lang="ts">
+  const redirect = (page: string) => {
+    const el = document.getElementById(page);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+</script>
 
 <style scoped lang="scss">
 .icb-inicio {
@@ -68,6 +85,37 @@
         padding: 16px 38px !important;
         font-size: 36px !important;
       }
+    }
+  }
+}
+.icb-visitanos {
+  padding: 28px 28px 36px;
+  &__titulo {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 37px;
+    text-decoration: underline;
+    text-decoration-color: $primary;
+    text-decoration-thickness: 4px;
+    margin-bottom: 15px;
+  }
+  &__content {
+    margin-bottom: 8px;
+    &-dia {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 32px;
+      margin-bottom: 4px;
+    }
+    &-reunion {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 22px;
+    }
+    &-hora {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
     }
   }
 }

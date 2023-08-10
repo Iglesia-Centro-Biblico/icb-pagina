@@ -11,14 +11,14 @@
     </div>
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
-        <li v-for="page in pages" :key="page.name">{{ page.name }}</li>
+        <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
       </ul>
     </nav>
   </div>
   <div :class="['icb-mobile-menu', { 'is-open': isOpen }]">
     <ul class="icb-mobile-menu__list">
       <li v-for="page in pages" :key="`mobile-${page.name}`">
-        <a href="">{{  page.name  }}</a>
+        <a @click="redirect(page.hash)">{{  page.name  }}</a>
       </li>
     </ul>
     <img class="icb-mobile-mone__logo" src="@/assets/logos/logo-completo-blanco.svg" height="70" alt="Logo Completo">
@@ -34,8 +34,8 @@
   let scrollPercentage: Ref<number> = ref(0);
 
   const pages: Ref<{ name: string, hash: string }[]> = ref([
-    { name: 'Inicio', hash: '' },
-    { name: 'Visítanos', hash: '' },
+    { name: 'Inicio', hash: 'inicio' },
+    { name: 'Visítanos', hash: 'visitanos' },
     { name: 'Nosotros', hash: '' },
     { name: 'Contacto', hash: '' },
   ]);
@@ -49,6 +49,13 @@
     hasScrolled.value = window.scrollY > 0;
     const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
     scrollPercentage.value = (scrollTop * 100) / (scrollHeight - clientHeight);
+  };
+  const redirect = (page: string) => {
+    const el = document.getElementById(page);
+    if (el) {
+      toggle();
+      setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 300);
+    }
   };
   onMounted(() => {
     window.addEventListener('scroll', scrollHandler);
