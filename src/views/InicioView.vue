@@ -7,7 +7,7 @@
     </div>
   </div>
   <div id="visitanos" class="icb-visitanos">
-    <h2 class="icb-visitanos__titulo primary-underline">Reuniones</h2>
+    <h2 class="icb-visitanos__titulo">Reuniones</h2>
     <div class="icb-visitanos__content">
       <h3 class="icb-visitanos__content-dia">Domingos</h3>
       <h4 class="icb-visitanos__content-reunion">Escuela Dominical</h4>
@@ -20,6 +20,10 @@
       <h4 class="icb-visitanos__content-reunion">Reunión de Oración</h4>
       <p class="icb-visitanos__content-hora">19:00 - 20:30 hrs</p>
     </div>
+  </div>
+  <div class="icb-direccion">
+    <h2 class="icb-direccion__titulo">Dirección</h2>
+    <p class="icb-direccion__p">La Iglesia Centro Bíblico se encuentra en <span>Charruas 726 entre Libertad y Silvan Fernandez</span></p>
   </div>
 </template>
 <script setup lang="ts">
@@ -88,6 +92,7 @@
     }
   }
 }
+
 .icb-visitanos {
   padding: 28px 28px 36px;
   &__titulo {
@@ -116,6 +121,31 @@
       font-size: 18px;
       font-weight: 500;
       line-height: 22px;
+    }
+  }
+}
+
+.icb-direccion {
+  padding: 28px 28px 36px;
+  background-color: $secondary;
+  &__titulo {
+    color: $white;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 37px;
+    text-decoration: underline;
+    text-decoration-color: $primary;
+    text-decoration-thickness: 4px;
+    margin-bottom: 15px;
+  }
+  &__p {
+    color: $white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    span {
+      color: $primary;
+      font-weight: 500;
     }
   }
 }
