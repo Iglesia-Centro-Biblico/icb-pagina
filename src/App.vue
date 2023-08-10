@@ -13,11 +13,11 @@ import Navigation from './components/navigation/Navigation.vue';
 
 <style scoped lang="scss">
 #app-content {
-  @include q-small {
-    transition: all 0.3s ease-in-out;
-    &.menu-open {
-      transform: translateX(-285px) !important;
-      
+  transition: all 0.3s ease-in-out;
+  &.menu-open {
+    transform: translateX(-285px) !important;
+    @include q-large {
+      transform: translateX(0) !important;
     }
   }
 }

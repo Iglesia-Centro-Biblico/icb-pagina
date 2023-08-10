@@ -1,9 +1,9 @@
 <template>
   <div :class="['icb-navbar', { 'has-scrolled': hasScrolled, 'is-open': isOpen }]">
     <div class="icb-navbar__progress-bar" :style="{ width: `${scrollPercentage}%` }"></div>
-    <img class="icb-navbar__logo" src="@/assets/logos/logo.svg" height="50" alt="Logo">
-    <img v-if="!hasScrolled" class="icb-navbar__logo-completo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo">
+    <img class="icb-navbar__logo" src="@/assets/logos/logo.svg" height="32" alt="Logo">
     <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco">
+    <img v-else class="icb-navbar__logo-completo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo">
     <div :class="['icb-navbar__menu', { 'is-open': isOpen }]" @click="toggle">
       <div class="icb-navbar__menu-line"></div>
       <div class="icb-navbar__menu-line"></div>
@@ -67,13 +67,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
+  padding: 0 16px;
   z-index: 100;
-  @include q-small {
-    transition: all 0.3s ease-in-out;
-    &.is-open {
-      transform: translateX(-285px) !important;
+  height: 48px;
+  padding: 0 16px;
+  transition: all 0.3s ease-in-out;
+  &.is-open {
+    transform: translateX(-285px) !important;
+    @include q-large {
+      transform: translateX(0) !important;
     }
+  }
+  @include q-medium {
+    height: 80px;
+    padding: 0 24px;
   }
   &.has-scrolled {
     background-color: $secondary;
@@ -109,20 +116,33 @@
   }
   &__menu {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 16px;
+    right: 20px;
     z-index: 5;
-    @include q-medium {
-      display: none;
-    }
     &-line {
       margin: 0;
       padding: 0;
-      width: 40px;
-      height: 3px;
-      margin-bottom: 7px;
+      width: 30px;
+      height: 2px;
+      margin-bottom: 6px;
       background-color: $secondary;
     }
+    @include q-medium {
+      top: 30px;
+      right: 30px;
+      &-line {
+        margin: 0;
+        padding: 0;
+        width: 40px;
+        height: 3px;
+        margin-bottom: 7px;
+        background-color: $secondary;
+      }
+    }
+    @include q-large {
+      display: none;
+    }
+  
     &.is-open {
       div:nth-child(1) {
         transform: translateX(0px) translateY(9px) rotate(45deg);
@@ -136,13 +156,13 @@
     }
   }
   &__nav ul {
-    display: flex;
+    display: none;
     justify-content: flex-end;
     align-items: center;
     gap: 56px;
     list-style: none;
-    @include q-small {
-      display: none;
+    @include q-large {
+      display: flex;
     }
 
     li {
@@ -167,12 +187,9 @@
   justify-content: space-between;
   background-color: $secondary;
   padding: 50px 28px 32px;
-
-  @include q-small {
-    transition: all 0.3s ease-in-out;
-    &.is-open {
-      transform: translateX(-285px) !important;
-    }
+  transition: all 0.3s ease-in-out;
+  &.is-open {
+    transform: translateX(-285px);
   }
   &__list {
     list-style: none;
@@ -194,6 +211,10 @@
         text-decoration: none;
       }
     }
+  }
+  @include q-large {
+    display: none;
+    transform: translateX(0) !important;
   }
 }
 </style>
