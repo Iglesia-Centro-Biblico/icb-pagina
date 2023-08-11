@@ -28,6 +28,7 @@
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted } from 'vue';
   import type { Ref } from 'vue';
+  const emit = defineEmits(['expanded'])
   
   let isOpen: Ref<boolean> = ref(false);
   let hasScrolled: Ref<boolean> = ref(false);
@@ -42,8 +43,7 @@
 
   const toggle = () => {
     isOpen.value = !isOpen.value;
-    const content = document.getElementById('app-content'); 
-    content?.classList[isOpen.value ? 'add' : 'remove']("menu-open");
+    emit('expanded', isOpen.value);
   };
   const scrollHandler = () => {
     hasScrolled.value = window.scrollY > 0;
@@ -57,6 +57,8 @@
       setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 300);
     }
   };
+
+  defineExpose({ toggle }); 
   onMounted(() => {
     window.addEventListener('scroll', scrollHandler);
   });
@@ -152,13 +154,21 @@
   
     &.is-open {
       div:nth-child(1) {
-        transform: translateX(0px) translateY(9px) rotate(45deg);
+        transform: translateX(0px) translateY(8px) rotate(45deg);
+      }
+      div:nth-child(3) {
+        transform: translateX(0px) translateY(0px) rotate(-45deg);
       }
       div:nth-child(2) {
         display: none;
       }
-      div:nth-child(3) {
-        transform: translateX(0px) translateY(-1px) rotate(-45deg);
+      @include q-medium {
+        div:nth-child(1) {
+          transform: translateX(0px) translateY(9px) rotate(45deg);
+        }
+        div:nth-child(3) {
+          transform: translateX(0px) translateY(-1px) rotate(-45deg);
+        }
       }
     }
   }

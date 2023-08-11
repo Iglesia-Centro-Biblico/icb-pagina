@@ -1,29 +1,29 @@
 <template>
-  <div id="inicio" class="icb-inicio">
+  <div id="inicio" class="icb-inicio grid">
     <div class="icb-inicio__bienvenida">
       <h2 class="icb-inicio__bienvenida-title">Bienvenidos a la</h2>
       <h1 class="icb-inicio__bienvenida-title">Iglesia Centro Bíblico</h1>
       <button class="icb-inicio__bienvenida-cta" @click="redirect('visitanos')">Visítanos</button>
     </div>
   </div>
-  <div id="visitanos" class="icb-visitanos">
-    <h2 class="icb-visitanos__titulo">Reuniones</h2>
-    <div class="icb-visitanos__content">
+  <div id="visitanos" class="icb-visitanos grid">
+    <h2 class="icb-visitanos__titulo col-md-12">Reuniones</h2>
+    <div class="icb-visitanos__content col-md-6">
       <h3 class="icb-visitanos__content-dia">Domingos</h3>
       <h4 class="icb-visitanos__content-reunion">Escuela Dominical</h4>
       <p class="icb-visitanos__content-hora">9:30 - 10:15 hrs</p>
       <h4 class="icb-visitanos__content-reunion">Culto de Adoración</h4>
       <p class="icb-visitanos__content-hora">9:30 - 10:15 hrs</p>
     </div>
-    <div class="icb-visitanos__content">
+    <div class="icb-visitanos__content col-md-6">
       <h3 class="icb-visitanos__content-dia">Miercoles</h3>
       <h4 class="icb-visitanos__content-reunion">Reunión de Oración</h4>
       <p class="icb-visitanos__content-hora">19:00 - 20:30 hrs</p>
     </div>
   </div>
-  <div class="icb-direccion">
-    <h2 class="icb-direccion__titulo">Dirección</h2>
-    <p class="icb-direccion__p">La Iglesia Centro Bíblico se encuentra en <span>Charruas 726 entre Libertad y Silvan Fernandez</span></p>
+  <div class="icb-direccion grid">
+    <h2 class="icb-direccion__titulo col-md-12">Dirección</h2>
+    <p class="icb-direccion__p col-md-5">La Iglesia Centro Bíblico se encuentra en <span>Charruas 726 entre Libertad y Silvan Fernandez</span></p>
   </div>
 </template>
 <script setup lang="ts">
