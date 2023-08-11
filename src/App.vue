@@ -16,7 +16,7 @@ import { ref } from 'vue';
  import type { Ref } from 'vue';
 import Navigation from './components/navigation/Navigation.vue';
 const navExpanded: Ref<boolean> = ref(false);
-const nav = ref<InstanceType<typeof Navigation | null>>(null);
+const nav = ref<InstanceType<typeof Navigation>>();
 
 const closeNav = () => {
   if (navExpanded.value) nav.value?.toggle();
