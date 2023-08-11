@@ -38,10 +38,12 @@
   min-height: 100vh;
   background-image: url('../assets/images/bible-bg.jpg');
   background-repeat: no-repeat;
-  background-position: 100% 100%;
-  background-size: cover;
+  background-position: 50% 50%;
   background-attachment: fixed;
-  // Use mixin to set breakpoints
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   @include q-large {
     background-position: 100% 20%;
   }
