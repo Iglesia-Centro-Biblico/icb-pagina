@@ -38,7 +38,7 @@
   min-height: 100vh;
   background-image: url('../assets/images/bible-bg.jpg');
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: 100% 100%;
   background-size: cover;
   background-attachment: fixed;
   // Use mixin to set breakpoints
