@@ -9,12 +9,17 @@
   >
     <RouterView />
   </main>
+  <footer>
+    <Footer />
+  </footer>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
- import type { Ref } from 'vue';
+import type { Ref } from 'vue';
 import Navigation from './components/navigation/Navigation.vue';
+import Footer from './components/footer/Footer.vue';
+
 const navExpanded: Ref<boolean> = ref(false);
 const nav = ref<InstanceType<typeof Navigation>>();
 
