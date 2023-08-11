@@ -1,9 +1,9 @@
 <template>
   <div :class="['icb-navbar', { 'has-scrolled': hasScrolled, 'is-open': isOpen }]">
     <div class="icb-navbar__progress-bar" :style="{ width: `${scrollPercentage}%` }"></div>
-    <img class="icb-navbar__logo" src="@/assets/logos/logo.svg" height="32" alt="Logo">
-    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco">
-    <img v-else class="icb-navbar__logo-completo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo">
+    <img class="icb-navbar__logo icb-logo" src="@/assets/logos/logo.svg" height="32" width="32" alt="Logo" @click.prevent.stop="redirect('inicio')">
+    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco icb-logo" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco"  @click.prevent.stop="redirect('inicio')">
+    <img v-else class="icb-navbar__logo-completo icb-logo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo"  @click.prevent.stop="redirect('inicio')">
     <div :class="['icb-navbar__menu', { 'is-open': isOpen }]" @click="toggle">
       <div class="icb-navbar__menu-line"></div>
       <div class="icb-navbar__menu-line"></div>
@@ -11,7 +11,7 @@
     </div>
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
-        <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
+        <li v-for="page in pages" :key="page.name" @click="redirect(page.hash, 'toggle')">{{ page.name }}</li>
       </ul>
     </nav>
   </div>
@@ -50,11 +50,16 @@
     const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
     scrollPercentage.value = (scrollTop * 100) / (scrollHeight - clientHeight);
   };
-  const redirect = (page: string) => {
+  const redirect = (page: string, option: string) => {
     const el = document.getElementById(page);
     if (el) {
-      toggle();
-      setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 300);
+      let dt = 0;
+      if (option === 'toggle') {
+        dt = 300;
+        toggle();
+      };
+      
+      setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), dt);
     }
   };
 
@@ -112,6 +117,9 @@
     padding: 0;
     height: 3px;
     background-color: $primary;
+  }
+  .icb-logo {
+    cursor: pointer;
   }
   &__logo {
     @include q-medium {
@@ -187,6 +195,7 @@
       line-height: 26.4px;
       font-weight: 600;
       color: $secondary;
+      cursor: pointer;
     }
   }
 }
