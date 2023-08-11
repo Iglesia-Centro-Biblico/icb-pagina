@@ -50,7 +50,7 @@
     const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
     scrollPercentage.value = (scrollTop * 100) / (scrollHeight - clientHeight);
   };
-  const redirect = (page: string, option: string) => {
+  const redirect = (page: string, option: string | null) => {
     const el = document.getElementById(page);
     if (el) {
       let dt = 0;
