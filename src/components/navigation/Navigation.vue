@@ -1,9 +1,9 @@
 <template>
   <div :class="['icb-navbar', { 'has-scrolled': hasScrolled, 'is-open': isOpen }]">
     <div class="icb-navbar__progress-bar" :style="{ width: `${scrollPercentage}%` }"></div>
-    <img class="icb-navbar__logo icb-logo" src="@/assets/logos/logo.svg" height="32" width="32" alt="Logo" @click.prevent.stop="redirect('inicio')">
-    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco icb-logo" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco"  @click.prevent.stop="redirect('inicio')">
-    <img v-else class="icb-navbar__logo-completo icb-logo" src="@/assets/logos/logo-completo.svg" height="50" alt="Logo Completo"  @click.prevent.stop="redirect('inicio')">
+    <img class="icb-navbar__logo icb-logo" src="/logo.svg" height="32" width="32" alt="Logo" @click.prevent.stop="redirect('inicio')">
+    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco icb-logo" src="/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco"  @click.prevent.stop="redirect('inicio')">
+    <img v-else class="icb-navbar__logo-completo icb-logo" src="/logo-completo.svg" height="50" alt="Logo Completo"  @click.prevent.stop="redirect('inicio')">
     <div :class="['icb-navbar__menu', { 'is-open': isOpen }]" @click="toggle">
       <div class="icb-navbar__menu-line"></div>
       <div class="icb-navbar__menu-line"></div>
@@ -21,7 +21,7 @@
         <a @click="redirect(page.hash, 'toggle')">{{  page.name  }}</a>
       </li>
     </ul>
-    <img class="icb-mobile-mone__logo" src="@/assets/logos/logo-completo-blanco.svg" height="70" alt="Logo Completo">
+    <img class="icb-mobile-mone__logo" src="/logo-completo-blanco.svg" height="70" alt="Logo Completo">
   </div>
 </template>
 

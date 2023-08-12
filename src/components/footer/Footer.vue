@@ -1,7 +1,7 @@
 <template>
     <footer id="footer" class="icb-footer">
         <div class="icb-footer__logos">
-            <img class="icb-footer__logos-icb" src="@/assets/logos/logo-completo-blanco.svg" height="50" alt="Logo Footer">
+            <img class="icb-footer__logos-icb" src="/logo-completo-blanco.svg" height="50" alt="Logo Footer">
             <div class="icb-footer__logos-social-media">
             </div>
         </div>
