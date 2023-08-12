@@ -20,6 +20,9 @@
         <h3 class="icb-visitanos__content-info-dia">Miercoles</h3>
         <h4 class="icb-visitanos__content-info-reunion">Reunión de Oración</h4>
         <p class="icb-visitanos__content-info-hora">19:00 - 20:30 hrs</p>
+        <h3 class="icb-visitanos__content-info-dia" style="margin-top: 8px">Sabados</h3>
+        <h4 class="icb-visitanos__content-info-reunion">Reunión de Jóvenes</h4>
+        <p class="icb-visitanos__content-info-hora">18:00 - 20:30 hrs</p>
       </div>
     </div>
   </div>
@@ -52,7 +55,7 @@
 <style scoped lang="scss">
 .icb-inicio {
   min-height: 100vh;
-  background-image: url('../assets/images/bible-bg.jpg');
+  background-image: url('../assets/images/icb-mobile-bible-bg.webp');
   background-repeat: no-repeat;
   background-position-x: 50%;
   background-position-y: 50%;
@@ -61,6 +64,10 @@
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+
+  @include q-medium {
+    background-image: url('../assets/images/icb-bible-bg.webp');
+  }
   @include q-large {
     background-position: 100% 20%;
   }
@@ -113,6 +120,7 @@
 }
 
 .icb-visitanos {
+  scroll-margin-top: 50px;
   padding: 28px 28px 36px;
   @include q-medium { 
     padding: 66px 42px 66px;
@@ -130,12 +138,6 @@
         text-decoration-color: $primary;
         text-decoration-thickness: 4px;
         margin-bottom: 15px;
-        @include q-medium {
-          font-size: 60px;
-          line-height: 64px;
-          text-decoration-thickness: 6px;
-          margin-bottom: 55px;
-        }
       }
       margin-bottom: 8px;
       &-dia {
@@ -158,6 +160,12 @@
     @include q-medium {
       grid-template-columns: 1fr 1fr;
       &-info {
+        &-titulo {
+          font-size: 60px;
+          line-height: 64px;
+          text-decoration-thickness: 6px;
+          margin-bottom: 25px;
+        }
         &-dia {
           font-size: 40px;
           line-height: 44px;
