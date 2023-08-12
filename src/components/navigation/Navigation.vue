@@ -11,14 +11,14 @@
     </div>
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
-        <li v-for="page in pages" :key="page.name" @click="redirect(page.hash, 'toggle')">{{ page.name }}</li>
+        <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
       </ul>
     </nav>
   </div>
   <div :class="['icb-mobile-menu', { 'is-open': isOpen }]">
     <ul class="icb-mobile-menu__list">
       <li v-for="page in pages" :key="`mobile-${page.name}`">
-        <a @click="redirect(page.hash)">{{  page.name  }}</a>
+        <a @click="redirect(page.hash, 'toggle')">{{  page.name  }}</a>
       </li>
     </ul>
     <img class="icb-mobile-mone__logo" src="@/assets/logos/logo-completo-blanco.svg" height="70" alt="Logo Completo">
@@ -136,6 +136,7 @@
     top: 16px;
     right: 20px;
     z-index: 5;
+    cursor: pointer;
     &-line {
       margin: 0;
       padding: 0;
@@ -235,6 +236,7 @@
         font-weight: 600;
         color: $white;
         text-decoration: none;
+        cursor: pointer;
       }
     }
   }

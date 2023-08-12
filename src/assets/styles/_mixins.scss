@@ -1,5 +1,5 @@
 $small: 481px;
-$medium: 769px;
+$medium: 800px;
 
 @mixin q-small {
     @media screen and (max-width: #{$small}) {
