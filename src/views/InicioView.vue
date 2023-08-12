@@ -55,6 +55,7 @@
 <style scoped lang="scss">
 .icb-inicio {
   min-height: 100vh;
+  width: 100%;
   background-image: url('../assets/images/icb-mobile-bible-bg.webp');
   background-repeat: no-repeat;
   background-position-x: 50%;
@@ -127,7 +128,6 @@
   }
   &__content {
     display: grid;
-    grid-template-columns: 1fr;
     
     &-info {
       &-titulo {
@@ -191,7 +191,6 @@
   background-color: $secondary;
   &__content {
     display: grid;
-    grid-template-columns: 1fr;
     &-info {
       &-titulo {
         color: $white;
