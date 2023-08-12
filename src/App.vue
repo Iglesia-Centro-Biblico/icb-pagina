@@ -1,6 +1,6 @@
 <template>
   <header id="app-header">
-    <Navigation ref="nav" @expanded="(isOpen) => navExpanded = isOpen"/>
+    <ICBNavigation ref="nav" @expanded="(isOpen) => navExpanded = isOpen"/>
   </header>
   <main 
     id="app-content" 
@@ -9,19 +9,17 @@
   >
     <RouterView />
   </main>
-  <footer>
-    <Footer />
-  </footer>
+  <ICBFooter />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Ref } from 'vue';
-import Navigation from './components/navigation/Navigation.vue';
-import Footer from './components/footer/Footer.vue';
+import ICBNavigation from './components/navigation/Navigation.vue';
+import ICBFooter from './components/footer/Footer.vue';
 
 const navExpanded: Ref<boolean> = ref(false);
-const nav = ref<InstanceType<typeof Navigation>>();
+const nav = ref<InstanceType<typeof ICBNavigation>>();
 
 const closeNav = () => {
   if (navExpanded.value) nav.value?.toggle();
@@ -33,6 +31,7 @@ const closeNav = () => {
   transition: all 0.3s ease-in-out;
   &.menu-expended {
     transform: translateX(-285px) !important;
+    overflow-y: hidden;
     &:after {
       content: '';
       position: absolute;
