@@ -58,8 +58,7 @@
   width: 100%;
   background-image: url('../assets/images/icb-mobile-bible-bg.webp');
   background-repeat: no-repeat;
-  background-position-x: 50%;
-  background-position-y: 50%;
+  background-position: center center;
   background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
