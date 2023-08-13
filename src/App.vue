@@ -20,7 +20,7 @@ import ICBFooter from './components/footer/Footer.vue';
 
 const navExpanded: Ref<boolean> = ref(false);
 const nav = ref<InstanceType<typeof ICBNavigation>>();
-let browserInstallApp: Ref<Event> = ref();
+let browserInstallApp: Ref<Event | undefined> = ref();
 
 const closeNav = () => {
   if (navExpanded.value) nav.value?.toggle();
