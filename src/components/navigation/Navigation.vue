@@ -12,6 +12,9 @@
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
         <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
+        <li v-if="installApp" class="install-button" @click="install">
+          <img src="@/assets/icons/install-icon.svg" alt="install icon"> Install
+        </li>
       </ul>
     </nav>
   </div>
@@ -28,7 +31,10 @@
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted } from 'vue';
   import type { Ref } from 'vue';
-  const emit = defineEmits(['expanded'])
+  const emit = defineEmits(['expanded']);
+  const props = defineProps({
+    installApp: { type: Event },
+  });
   
   let isOpen: Ref<boolean> = ref(false);
   let hasScrolled: Ref<boolean> = ref(false);
@@ -37,8 +43,8 @@
   const pages: Ref<{ name: string, hash: string }[]> = ref([
     { name: 'Inicio', hash: 'inicio' },
     { name: 'Visítanos', hash: 'visitanos' },
-    { name: 'Nosotros', hash: '' },
-    { name: 'Contacto', hash: '' },
+    // { name: 'Nosotros', hash: '' },
+    // { name: 'Contacto', hash: '' },
   ]);
 
   const toggle = () => {
@@ -60,6 +66,18 @@
       };
       
       setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), dt);
+    }
+  };
+  const install = async () => {
+    if (props.installApp.value) {
+      props.installApp.value?.prompt();
+      const { outcome } = await props.installApp.value?.userChoice;
+
+      if (outcome === 'accepted') {
+        console.log('User accepted the install prompt.');
+      } else if (outcome === 'dismissed') {
+        console.log('User dismissed the install prompt')xw;
+      }
     }
   };
 
@@ -197,6 +215,21 @@
       font-weight: 600;
       color: $secondary;
       cursor: pointer;
+      &.install-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        background-color: $primary;
+        color: $white;
+        font-size: 14px;
+        border-radius: 20px;
+        padding: 8px 16px;
+        margin-left: -4px;
+        img {
+          margin-top: 3px;
+        }
+      }
     }
   }
 }
