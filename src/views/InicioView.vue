@@ -59,7 +59,6 @@
   background-image: url('../assets/images/icb-mobile-bible-bg.webp');
   background-repeat: no-repeat;
   background-position: center center;
-  background-attachment: fixed;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -67,6 +66,7 @@
 
   @include q-medium {
     background-image: url('../assets/images/icb-bible-bg.webp');
+    background-attachment: fixed;
   }
   @include q-large {
     background-position: 100% 20%;
