@@ -76,7 +76,7 @@
       if (outcome === 'accepted') {
         console.log('User accepted the install prompt.');
       } else if (outcome === 'dismissed') {
-        console.log('User dismissed the install prompt')xw;
+        console.log('User dismissed the install prompt');
       }
     }
   };
