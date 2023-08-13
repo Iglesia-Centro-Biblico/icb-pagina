@@ -1,6 +1,6 @@
 <template>
   <header id="app-header">
-    <ICBNavigation ref="nav" :install-app="browserInstallApp" @expanded="(isOpen) => navExpanded = isOpen"/>
+    <ICBNavigation ref="nav" @expanded="(isOpen) => navExpanded = isOpen"/>
   </header>
   <main 
     id="app-content" 
@@ -13,30 +13,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onBeforeMount, onBeforeUnmount  } from 'vue';
+import { ref } from 'vue';
 import type { Ref } from 'vue';
 import ICBNavigation from './components/navigation/Navigation.vue';
 import ICBFooter from './components/footer/Footer.vue';
 
 const navExpanded: Ref<boolean> = ref(false);
 const nav = ref<InstanceType<typeof ICBNavigation>>();
-let browserInstallApp: Ref<Event | undefined> = ref();
 
 const closeNav = () => {
   if (navExpanded.value) nav.value?.toggle();
 };
-
-const installEventHandler = (e: Event) => {
-  e.preventDefault();
-  browserInstallApp.value = e;
-};
-
-onBeforeMount(() => {
-  window.addEventListener('beforeinstallprompt', installEventHandler);
-});
-onBeforeUnmount(() => {
-  window.removeEventListener('beforeinstallprompt', installEventHandler);
-});
 </script>
 
 <style scoped lang="scss">

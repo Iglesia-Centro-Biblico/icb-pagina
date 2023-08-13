@@ -12,9 +12,9 @@
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
         <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
-        <li v-if="installApp" class="install-button" @click="install">
+        <!-- <li v-if="installApp" class="install-button" @click="install">
           <img src="@/assets/icons/install-icon.svg" alt="install icon"> Install
-        </li>
+        </li> -->
       </ul>
     </nav>
   </div>
@@ -32,9 +32,6 @@
   import { ref, onMounted, onUnmounted } from 'vue';
   import type { Ref } from 'vue';
   const emit = defineEmits(['expanded']);
-  const props = defineProps({
-    installApp: { type: Event },
-  });
   
   let isOpen: Ref<boolean> = ref(false);
   let hasScrolled: Ref<boolean> = ref(false);
@@ -44,7 +41,7 @@
     { name: 'Inicio', hash: 'inicio' },
     { name: 'Visítanos', hash: 'visitanos' },
     // { name: 'Nosotros', hash: '' },
-    // { name: 'Contacto', hash: '' },
+    { name: 'Contacto', hash: 'footer' },
   ]);
 
   const toggle = () => {
@@ -66,18 +63,6 @@
       };
       
       setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), dt);
-    }
-  };
-  const install = async () => {
-    if (props.installApp.value) {
-      props.installApp.value?.prompt();
-      const { outcome } = await props.installApp.value?.userChoice;
-
-      if (outcome === 'accepted') {
-        console.log('User accepted the install prompt.');
-      } else if (outcome === 'dismissed') {
-        console.log('User dismissed the install prompt');
-      }
     }
   };
 
