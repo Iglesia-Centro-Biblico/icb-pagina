@@ -12,9 +12,9 @@
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
         <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
-        <!-- <li v-if="installApp" class="install-button" @click="install">
+        <li v-if="installApp" class="install-button" @click="install">
           <img src="@/assets/icons/install-icon.svg" alt="install icon"> Install
-        </li> -->
+        </li>
       </ul>
     </nav>
   </div>
@@ -36,6 +36,7 @@
   let isOpen: Ref<boolean> = ref(false);
   let hasScrolled: Ref<boolean> = ref(false);
   let scrollPercentage: Ref<number> = ref(0);
+  let installApp: Ref<any> = ref();
 
   const pages: Ref<{ name: string, hash: string }[]> = ref([
     { name: 'Inicio', hash: 'inicio' },
@@ -48,12 +49,7 @@
     isOpen.value = !isOpen.value;
     emit('expanded', isOpen.value);
   };
-  const scrollHandler = () => {
-    hasScrolled.value = window.scrollY > 0;
-    const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
-    scrollPercentage.value = (scrollTop * 100) / (scrollHeight - clientHeight);
-  };
-  const redirect = (page: string, option?: string) => {
+  const redirect = (page: string, option?: string) : void  => {
     const el = document.getElementById(page);
     if (el) {
       let dt = 0;
@@ -65,13 +61,35 @@
       setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), dt);
     }
   };
+  const install = async () => {
+    if (installApp?.value) return null;
+
+    installApp.value.prompt();
+    const { outcome } = await installApp.value.userChoice;
+    console.log(`User response to the install prompt: ${outcome}`);
+    installApp.value = null;
+  };
+
+  const scrollHandler = (e: any) => {
+    e.preventDefault();
+    hasScrolled.value = window.scrollY > 0;
+    const { scrollHeight, clientHeight, scrollTop } = document.documentElement;
+    scrollPercentage.value = (scrollTop * 100) / (scrollHeight - clientHeight);
+  };
+
+  const installHandler = (e: any) => {
+    e.preventDefault();
+    installApp.value = e;
+  };  
 
   defineExpose({ toggle }); 
   onMounted(() => {
     window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('beforeinstallprompt', installHandler);
   });
   onUnmounted(() => {
     window.removeEventListener('scroll', scrollHandler);
+    window.removeEventListener('beforeinstallprompt', installHandler);
   });
 </script>
 
