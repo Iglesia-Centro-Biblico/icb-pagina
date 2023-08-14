@@ -13,7 +13,7 @@
       <ul class="icb-navbar__nav-list">
         <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
         <li v-if="installApp" class="install-button" @click="install">
-          <img src="@/assets/icons/install-icon.svg" alt="install icon"> Install
+          <img src="@/assets/icons/install-icon.svg" alt="install icon"> Instalar
         </li>
       </ul>
     </nav>
@@ -62,7 +62,7 @@
     }
   };
   const install = async () => {
-    if (installApp?.value) return null;
+    if (!installApp?.value) return null;
 
     installApp.value.prompt();
     const { outcome } = await installApp.value.userChoice;
