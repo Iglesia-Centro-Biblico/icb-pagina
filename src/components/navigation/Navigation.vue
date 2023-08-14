@@ -23,6 +23,9 @@
       <li v-for="page in pages" :key="`mobile-${page.name}`">
         <a @click="redirect(page.hash, 'toggle')">{{  page.name  }}</a>
       </li>
+      <li v-if="installApp" class="install-button" @click="install">
+        <img src="@/assets/icons/install-icon.svg" alt="install icon"> Instalar
+      </li>
     </ul>
     <img class="icb-mobile-mone__logo" src="/logo-completo-blanco.svg" height="70" alt="Logo Completo">
   </div>
@@ -94,6 +97,25 @@
 </script>
 
 <style scoped lang="scss">
+// START: GENERAL COMPONENTS
+// Install button
+.install-button {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background-color: $primary;
+  color: $white !important;
+  font-size: 14px !important;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 8px 16px !important;
+  margin-left: -4px;
+  img {
+    margin-top: 3px;
+  }
+}
+// END: GENERAL COMPONENTS
 .icb-navbar {
   $self: &;
   position: fixed;
@@ -218,21 +240,6 @@
       font-weight: 600;
       color: $secondary;
       cursor: pointer;
-      &.install-button {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
-        background-color: $primary;
-        color: $white;
-        font-size: 14px;
-        border-radius: 20px;
-        padding: 8px 16px;
-        margin-left: -4px;
-        img {
-          margin-top: 3px;
-        }
-      }
     }
   }
 }
