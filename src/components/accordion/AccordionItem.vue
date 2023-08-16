@@ -2,7 +2,7 @@
     <div class="icb-accordion-item">
         <div ref="header" class="icb-accordion-item__header">
              <slot name="header" :toggle="toggleContent" :visible="isExpanded">
-                <div :class="['icb-accordion-item__header-icon', { 'is-expanded': isExpanded }]">
+                <div :class="['icb-accordion-item__header-icon', { 'is-expanded': isExpanded }]" @click="toggleContent">
                     <div class="icb-accordion-item__header-icon-line"></div>
                     <div class="icb-accordion-item__header-icon-line"></div>
                 </div>
@@ -77,6 +77,7 @@ onUpdated(watchExpand);
             width: 23px;
             height: 23px;
             border-radius: 23px;
+            cursor: pointer;
             &-line {
                 position: absolute;
                 top: 50%;
