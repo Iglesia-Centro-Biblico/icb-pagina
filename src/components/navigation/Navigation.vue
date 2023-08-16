@@ -44,7 +44,7 @@
   const pages: Ref<{ name: string, hash: string }[]> = ref([
     { name: 'Inicio', hash: 'inicio' },
     { name: 'Visítanos', hash: 'visitanos' },
-    // { name: 'Nosotros', hash: '' },
+    { name: 'Nosotros', hash: 'nosotros' },
     { name: 'Contacto', hash: 'footer' },
   ]);
 
