@@ -48,7 +48,7 @@
     <h2 class="icb--titulo">Que Creemos</h2>
     <accordion :multi="true">
       <accordion-item v-for="seccion in declaracionDeFe" :key="seccion.titulo" :label="seccion.titulo" :defaultIsOpen="false">
-        <p  v-for="(explicacion, i) in seccion.explicacion" :key="explicacion.id+'-'+i" :class="['icb-que-creemos__explicacion', `child-${explicacion.child || 1}`]"><span>{{ explicacion.id }}</span> {{ explicacion.text }}</p>
+        <p  v-for="(explicacion, i) in seccion.explicacion" :key="explicacion.id+'-'+i" :class="['icb-que-creemos__explicacion', `child-${explicacion.child || 1}`]"><span v-if="explicacion.id">{{ explicacion.id }}</span> {{ explicacion.text }}</p>
       </accordion-item>
     </accordion>
   </div>
