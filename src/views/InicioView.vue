@@ -47,8 +47,8 @@
   <div id="nosotros" class="icb-que-creemos">
     <h2 class="icb--titulo">Que Creemos</h2>
     <accordion :multi="true">
-      <accordion-item v-for="seccion in declaracionDeFe" :label="seccion.titulo" :defaultIsOpen="false">
-        <p class="icb-que-creemos__explicacion" v-for="explicacion in seccion.explicacion"><span>{{ explicacion.id }}</span> {{ explicacion.text }}</p>
+      <accordion-item v-for="seccion in declaracionDeFe" :key="seccion.titulo" :label="seccion.titulo" :defaultIsOpen="false">
+        <p  v-for="(explicacion, i) in seccion.explicacion" :key="explicacion.id+'-'+i" :class="['icb-que-creemos__explicacion', `child-${explicacion.child || 1}`]"><span>{{ explicacion.id }}</span> {{ explicacion.text }}</p>
       </accordion-item>
     </accordion>
   </div>
@@ -62,7 +62,7 @@
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const declaracionDeFe = [{
+  const declaracionDeFe: any[] = [{
     titulo: 'Dios',
     explicacion: [
         { id: 'A.', text: 'Hay un solo Dios— santo, eterno, omnipotente, omnisciente y omnipresente. (Deut. 6:4; 1 Tim. 2:5)' },
@@ -93,6 +93,10 @@
         { id: 'K.', text: 'Ascendió al cielo corporalmente. (Lc. 24:51; Hch. 1:9-11)' },
         { id: 'L.', text: 'Vive ahora para interceder por nosotros como nuestro Sumo Sacerdote y abogado. (Rom. 8:34; Heb. 6:20; Ef. 4:14-16; 1 Tim. 2:5; 1 Jn. 2:1)' },
         { id: 'M.', text: 'Vendrá otra vez. (Hch. 1:11; Jn. 14:1-3; 1 Tes. 4:13-17)' },
+        { id: '1.', child: 2, text: 'Para unir espíritus y cuerpos transformados de santos ya muertos. (1 Cor. 15:50-53; 1 Tes. 4:13-16)' },
+        { id: '2.', child: 2, text: 'Para transformar cuerpos de santos vivos y juntar a todos los suyos. (1 Cor. 15:51-53; 1 Jn. 3: 2-3; Fil. 3:20-21)' },
+        { id: '3.', child: 2, text: 'Para enviar la gran tribulación sobre el mundo.  (Mt. 24:15-22 ; Apoc.7:14)' },
+        { id: '4.', child: 2, text: 'Vendrá después para reinar mil años en la tierra. (Is. 11:1-16;  Apoc.20:4-6)' },
     ],
   }, {
     titulo: 'El Espiritu Santo',
@@ -101,7 +105,15 @@
         { id: 'B.', text: 'Vino el día de Pentecostés para morar en todo creyente para siempre. (Hch.1:4-5; 8; 2:1-4; Jn. 14:16-17; 1 Cor. 3:16; 6:19-20; Rom. 8:9-17)' },
         { id: 'C.', text: 'Entra en el creyente cuando confía en Dios para Salvación.(2 Cor. 1:21-22; Ef. 1:13-14; Tito 3:5).' },
         { id: 'D.', text: 'Entrando en el creyente obra varias cosas' },
+        { id: '1.', child: 2, text: 'Le hace nacer de nuevo. (Tito 3:5; Juan 3:3-6)' },
+        { id: '2.', child: 2, text: 'Le guía. (Rom. 8:14; Sal. 143:10; Gál. 5:18.)' },
+        { id: '3.', child: 2, text: 'Le bautiza. (Mat. 3:11; 1 Cor. 12:13.)' },
+        { id: '4.', child: 2, text: 'Le unge. (1 Juan 2:20; 27).' },
+        { id: '5.', child: 2, text: 'Le sella. (2 Cor. 1:22; Ef. 4:30).' },
         { id: 'E.', text: 'Una vez recibido, no se pierde. (Juan 14:16;  Ef. 4:30)' },
+        { id: '1.', child: 2, text: 'Su deseo es que vivamos llenos de Él. (Ef. 5:18)' },
+        { id: '2.', child: 2, text: 'A veces le contristamos y le apagamos. (Ef. 4:30; 1 Tes. 5:19)' },
+        { id: '3.', child: 2, text: 'Por eso necesitamos ser llenos de El muchas veces. Compare (Hch.2:24; 4:29; 9:17; 13:19; Ef. 1:13-14; 5:18)' },
         { id: 'F.', text: 'El reparte Sus Dones como Él quiere, no a gusto nuestro. (1 Cor. 12:4-11)' },
         { id: 'G.', text: 'Sus dones son habilidades sobrenaturales dadas por Él para Su servicio y Gloria, para provecho y edificación del cuerpo de Cristo, su Iglesia (1 Cor.12:4-11; 15-25; 28-30; Ef. 4:11-12). Hay dones, como el don de lenguas, milagros, sanidad y otros, que cesaron debido a que eran temporales dentro del propósito de Dios para la expansión del evangelio en los primeros años de la Iglesia.' },
     ],
@@ -128,12 +140,23 @@
         { id: 'B.', text: 'Las Escrituras son completas en sí mismas. (Deut. 4:2;  Jn. 14:26; 16:13 ; Apoc. 22:18-19)' },
         { id: 'C.', text: 'El Espíritu Santo es el único autor e intérprete que necesitamos. (Jn. 14:26;16:13-15; 1 Jn. 2:20, 27; 1 Cor. 2:14)' },
         { id: 'D.', text: 'La Palabra de Dios tiene poder' },
+        { id: '1.', child: 2, text: 'Para convertir el alma. (Salmos 19:7.)' },
+        { id: '2.', child: 2, text: 'Para salvar.(Stgo. 1:18; 21; 1 Ped. 1:23; 1 Cor. 1:18 y Hch. 11:14.)' },
+        { id: '3.', child: 2, text: 'Para limpiar. (Jn. 15:3 , Jn 17:17; Sal. 119:11-13; Ef. 5:26.)' },
     ],
   }, {
     titulo: 'Las Ordenanzas de Cristo',
     explicacion: [
         { id: 'A.', text: 'El Bautismo' },
+        { id: '1.', child: 2, text: 'El bautismo por inmersión es el único que ilustra bíblicamente la regeneración del creyente, y lo requerimos de todos los aspirante a membresia de la iglesia.  (Rom. 6:3-14; Hch. 8:36-39; Jn. 3:23)' },
+        { id: '2.', child: 2, text: 'El bautismo por inmersión es el testimonio público de que ya hemos recibido a Cristo como nuestro Salvador personal (Hech.8:26-38) y el  mismo no influye en nada a nuestra salvación. (Hch. 8:13-24)' },
+        { id: '3.', child: 2, text: 'Los candidatos deben de ser discipulados y luego examinados por el liderazgo de la Iglesia; aplazando y/o anulando el acto si hubiere alguna falta que afecte el buen orden, el testimonio público de Cristo y de su iglesia.' },
         { id: 'B.', text: 'La Cena del Señor (Santa Cena)' },
+        { id: '1.', child: 2, text: 'Es un memorial y ordenanza establecido por Cristo. (1 Cor. 11:24-26;Mat. 3:11; 1 Cor. 12:13; Hch. 10:44-47)' },
+        { id: '2.', child: 2, text: 'La participación en ella en nada influye en nuestra salvación. (1 Cor.11:27)' },
+        { id: '3.', child: 2, text: 'Participar en ella es deber y derecho de todo creyente regenerado. (Mat. 26:27)' },
+        { id: '4.', child: 2, text: 'Invitamos a participar en ella solamente a aquellos cristianos bautizados por inmersión, en plena comunión y de alguna iglesia evangélica que esté de acuerdo con nuestra doctrina y práctica, para evitar abusos. (1 Cor. 10:16-22; 11:20-22; 29-34 con 2 Jn. 10-11)' },
+        { id: '5.', child: 2, text: 'Se celebrará en lo posible el primer domingo de cada mes.' },
     ],
   }, {
     titulo: 'Plan de Salvación',
@@ -144,6 +167,9 @@
         { id: 'D.', text: 'Todo aquel que se arrepiente sinceramente de su condición pecaminosa y cree en el Señor Jesucristo recibiéndole por fe en su corazón, es justificado ante Dios en base a Su sangre derramada en la Cruz. (Jn. 3:16; Rom. 3:23-26, 10:9-10; Mat. 3:2; Mr. 1:15; Lc. 13:3; Hch. 3:19; 17:30)' },
         { id: 'E.', text: 'La salvación es por gracia solamente y no por las obras o méritos propios.(Ef. 2:8-9; Rom. 3:20-22: Tito 3:5-7)' },
         { id: 'F.', text: 'La salvación tiene tres aspectos importantes. (Jn. 5:24)' },
+        { id: '1.', child: 2, text: 'Pasado. Al recibir a Cristo el creyente es salvo de la culpa y pena del pecado. (Lc. 7:48-50; Ef. 1:6,2:5,8; Rom. 8:2)' },
+        { id: '2.', child: 2, text: 'Presente. Cristo va liberando al creyente del hábito y dominio del pecado. (Rom. 6:14; Fil. 2:12; 13; Gál. 2:19-20 y Rom. 12:2)' },
+        { id: '3.', child: 2, text: 'Futuro. En la completa redención del creyente, quien será conformado a la misma imagen de Cristo. (1 Jn. 3:2-3;  Ef. 1:13-14; Rom. 13:11 y 1 Ped. 1:5)' },
         { id: 'G.', text: 'La Salvación es segura y no se pierde (Jn.10:27-30, 6:37; Rom.8:1,33-39; 1 Jn. 5:13)' },
 
     ],
@@ -332,9 +358,13 @@
     span {
       font-weight: 700;
       color: $primary;
+      margin-right: 4px;
     }
     &:last-child {
       margin-bottom: 16px;
+    }
+    &.child-2 {
+      margin-left: 24px;
     }
   }
   @include q-medium {
