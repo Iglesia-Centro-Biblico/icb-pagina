@@ -74,8 +74,7 @@
         { id: 'A.', text: 'El hombre fue creado perfecto, a imagen de Dios. (Gén. 1:26-27; 5:1; 9:6)' },
         { id: 'B.', text: 'Pecó, trayendo sobre sí y su descendencia la muerte física y a la vez la muerte espiritual, la separación de Dios. (Ef. 2:1-3; 11-12; Rom. 6:23)' },
         { id: 'C.', text: 'Por esta causa todo ser humano nace con una naturaleza pecaminosa, corrompida. (Rom. 3:9-18, 23; Mar. 7:21-23; Col. 1:21)' },
-        { id: 'D.', text: 'El hombre por sí solo no puede volver a su estado primitivo de perfección y comunión con Dios. (Is. 59:1-2; 64:6; Rom. 8:6-8).' },
-        { text: 'El hombre por sí solo no puede volver a su estado primitivo de perfección y comunión con Dios. (Is. 59:1-2; 64:6; Rom. 8:6-8).'},
+        { id: 'D.', text: 'El hombre por sí solo no puede volver a su estado primitivo de perfección y comunión con Dios. (Is. 59:1-2; 64:6; Rom. 8:6-8). Debido a que en su naturaleza y estado pecaminoso, está Judicialmente  muerto en delitos y pecados. (Rom 3:23, Ef 2:1)' },
     ],
   }, {
     titulo: 'Jesucristo',
