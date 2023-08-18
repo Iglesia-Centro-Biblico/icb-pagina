@@ -14,7 +14,7 @@
         <h4 class="icb-visitanos__content-info-reunion">Escuela Dominical</h4>
         <p class="icb-visitanos__content-info-hora">9:30 - 10:15 hrs</p>
         <h4 class="icb-visitanos__content-info-reunion">Culto de Adoración</h4>
-        <p class="icb-visitanos__content-info-hora">9:30 - 10:15 hrs</p>
+        <p class="icb-visitanos__content-info-hora">10:30 - 12:00 hrs</p>
       </div>
       <div class="icb-visitanos__content-info">
         <h3 class="icb-visitanos__content-info-dia">Miercoles</h3>
