@@ -17,7 +17,7 @@
         <p class="icb-visitanos__content-info-hora">10:30 - 12:00 hrs</p>
       </div>
       <div class="icb-visitanos__content-info">
-        <h3 class="icb-visitanos__content-info-dia">Miercoles</h3>
+        <h3 class="icb-visitanos__content-info-dia">Miércoles</h3>
         <h4 class="icb-visitanos__content-info-reunion">Reunión de Oración</h4>
         <p class="icb-visitanos__content-info-hora">19:00 - 20:30 hrs</p>
         <h3 class="icb-visitanos__content-info-dia" style="margin-top: 8px">Sabados</h3>
