@@ -46,11 +46,16 @@
   </div>
   <div id="nosotros" class="icb-que-creemos">
     <h2 class="icb--titulo">Que Creemos</h2>
-    <accordion :multi="true">
+    <accordion class="icb-que-creemos__declaracion-mobile" :multi="true">
       <accordion-item v-for="seccion in declaracionDeFe" :key="seccion.titulo" :label="seccion.titulo" :defaultIsOpen="false">
         <p  v-for="(explicacion, i) in seccion.explicacion" :key="explicacion.id+'-'+i" :class="['icb-que-creemos__explicacion', `child-${explicacion.child || 1}`]"><span v-if="explicacion.id">{{ explicacion.id }}</span> {{ explicacion.text }}</p>
       </accordion-item>
     </accordion>
+    <div class="icb-que-creemos__declaracion-desktop">
+      <div>
+        <h3 v-for="(tema, index) in temas" :key="tema+index" @click="elijeDeclaracion(tema)">{{ tema }}</h3>
+      </div>
+    </div>
   </div>
 </template>
 <script setup lang="ts">
@@ -186,7 +191,13 @@
         { id: 'C.', text: 'Eclesiástica – separación de la iglesia de la apostasía, así como de grupos carismáticos, liberales, neo-evangélicos y ecuménicos. (2 Cor. 6:14-18; Tito 3:10; 2 Tim. 3:5, 4:2-4; 2 Jn. 10-11; Fil. 3:17-18; 1 Jn. 2:15-17)' },
         { id: 'D.', text: 'Familiar – separación del creyente del hermano no arrepentido, cuando este compromete la sana doctrina, ética cristiana o su moral en su vida o ministerio. (Rom. 16:17; 1 Cor. 5:11; 2 Tes. 3:6,14-15; Mt. 18:15-17; Gal. 6:1) (2 Tes. 3:15 No teniéndole como enemigo, 2Cor. 2:7-8 mostrando amor   y consuelo cuando este se haya arrepentido en forma sólida y genuina).' },
     ],
-}];
+  }];
+  
+  const temas: any = declaracionDeFe.map(({ titulo }) => titulo);
+
+  const elijeDeclaracion: any = (tema: string) => {
+    return declaracionDeFe.find(({ titulo }) => titulo === tema);
+  };
 </script>
 
 <style scoped lang="scss">
@@ -349,23 +360,32 @@
   }
 }
 .icb-que-creemos {
+  $creemos: &;
   padding: 36px 24px 42px;
   scroll-margin-top: 70px;
-  &__explicacion {
-    font-size: 16px;
-    font-weight: 400;
-    color: $secondary;
-    span {
-      font-weight: 700;
-      color: $primary;
-      margin-right: 4px;
+  &__declaracion-mobile {
+    #{ $creemos }__explicacion {
+      font-size: 16px;
+      font-weight: 400;
+      color: $secondary;
+      span {
+        font-weight: 700;
+        color: $primary;
+        margin-right: 4px;
+      }
+      &:last-child {
+        margin-bottom: 16px;
+      }
+      &.child-2 {
+        margin-left: 24px;
+      }
     }
-    &:last-child {
-      margin-bottom: 16px;
+    @include q-medium {
+      display: none;
     }
-    &.child-2 {
-      margin-left: 24px;
-    }
+  }
+  &__declaracion-desktop {
+
   }
   @include q-medium {
     padding: 66px 42px 66px;
