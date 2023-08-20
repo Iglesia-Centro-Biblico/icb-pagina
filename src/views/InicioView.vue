@@ -400,7 +400,7 @@
   &__declaracion-desktop {
     margin-top: 60px;
     display: none;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 500px 1fr;
     justify-content: space-between;
     #{ $creemos }__puntos {
       display: flex;
