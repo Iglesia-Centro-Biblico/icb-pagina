@@ -241,12 +241,13 @@
       background-color: $primary;
       color: $white;
       border: none;
-      padding: 8px 12px;
+      padding: 10px 20px;
       border-radius: 4px;
       font-family: 'Montserrat';
       font-size: 18px;
       font-weight: 600;
       margin-top: 16px;
+      border-radius: 50px;
       @include q-medium {
         padding: 16px 38px !important;
         font-size: 36px !important;
