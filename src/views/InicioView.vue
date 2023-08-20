@@ -53,14 +53,13 @@
     </accordion>
     <div class="icb-que-creemos__declaracion-desktop">
       <div class="icb-que-creemos__puntos">
-        <div class="icb-que-creemos__puntos-progreso">
-          <div class="icb-que-creemos__puntos-progreso-circle"></div>
+        <div class="icb-que-creemos__puntos-progreso" :style="{ '--progreso': `translateY(${60 * (selectedIndex)}px)` }">
         </div>
         <div class="icb-que-creemos__puntos-content">
           <h3 v-for="(tema, index) in temas" :key="tema+index" @click="elijeDeclaracion(index)">{{ tema }}</h3>
         </div>
       </div>
-      <div>
+      <div class="icb-que-creemos__info">
         <p  v-for="(explicacion, i) in declaracionDeFe[selectedIndex].explicacion" :key="explicacion.id+'-'+i" :class="['icb-que-creemos__explicacion', `child-${explicacion.child || 1}`]">
           <span v-if="explicacion.id">{{ explicacion.id }}</span> {{ explicacion.text }}
         </p>
@@ -251,7 +250,7 @@
   $creemos: &;
   padding: 36px 24px 42px;
   scroll-margin-top: 70px;
-  &__declaracion-mobile {
+  &__declaracion-mobile, &__declaracion-desktop {
     #{ $creemos }__explicacion {
       font-size: 16px;
       font-weight: 400;
@@ -268,46 +267,66 @@
         margin-left: 24px;
       }
     }
-    @include q-medium {
+  }
+  &__declaracion-mobile {
+    @include q-large {
       display: none;
     }
   }
   &__declaracion-desktop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    margin-top: 60px;
+    display: none;
+    grid-template-columns: 1fr 2fr;
     justify-content: space-between;
     #{ $creemos }__puntos {
       display: flex;
-      background-color: green;
-      padding: 18px 24px;
+      padding: 8px 24px;
       &-progreso {
         position: relative;
         width: 4px;
         height: 100%;
         background-color: $secondary;
-        margin-right: 24px;
-        &-circle {
+        margin-right: 37px;
+        &::after {
           position: absolute;
+          top: 32px;
           left: -15px;
           content: '';
           background-color: $primary;
           width: 33px;
           height: 33px;
           border-radius: 50%;
+          transform: var(--progreso);
+          transition: all 0.3s ease-in-out;
         }
       }
       &-content {
+        padding: 30px 0;
         h3 {
-          margin-bottom: 12px;
+          margin-bottom: 24px;
+          font-size: 30px;
+          font-weight: 700;
+          color: $secondary;
+          cursor: pointer;
+          line-height: 1.2;
+          &:nth-last-child(1) {
+            margin-bottom: 0;
+          }
         }
       }
+    }
+    #{ $creemos }__info {
+      padding: 30px 30px;
+      p {
+        font-size: 18px;
+      }
+    }
+    @include q-large {
+      display: grid;
     }
   }
   @include q-medium {
     padding: 66px 42px 66px;
-  }
-  @include q-large {
-    width: 80%;
   }
 }
 .icb--titulo {
