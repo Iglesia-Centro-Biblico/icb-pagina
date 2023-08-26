@@ -21,8 +21,8 @@
           <a 
             v-for="item in logo.options" 
             :key="logo.title+'-'+item.type" 
-            :href="item.src"
-            download
+            :href="item.href"
+            :download="logo.title"
             >
               {{ item.type }}
             </a>
@@ -66,7 +66,27 @@ const logos: any = [
     title: 'Logo Primario',
     sample: { src: '/logo.svg', width: '90' },
     options: [
-      { type: 'SVG', src: '/logo.svg' },
+      { type: 'SVG', href: '/logo.svg' },
+      { type: 'PNG', href: '/logo.png' },
+      { type: 'PDF', href: '/logo.pdf' },
+    ],
+  },
+  {
+    title: 'Logo Negro',
+    sample: { src: '/logo.svg', width: '90' },
+    options: [
+      { type: 'SVG', href: '/logo.svg' },
+      { type: 'PNG', href: '/logo.png' },
+      { type: 'PDF', href: '/logo.pdf' },
+    ],
+  },
+  {
+    title: 'Logo Blanco',
+    sample: { src: '/logo.svg', width: '90' },
+    options: [
+      { type: 'SVG', href: '/logo.svg' },
+      { type: 'PNG', href: '/logo.png' },
+      { type: 'PDF', href: '/logo.pdf' },
     ],
   },
 ];
@@ -103,6 +123,36 @@ const logos: any = [
           span {
             font-weight: 600;
           }
+        }
+      }
+    }
+  }
+  &__logos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+      &-sample {
+        content: '';
+        height: 90px;
+        width: 90px;
+      }
+      &-info {
+        h3 {
+          font-weight: 700;
+        }
+        a {
+          font-size: 14px;
+          margin: 0;
+          padding: 0;
+          text-decoration: none;
+          margin-right: 8px;
+          color: $primary;
+          font-weight: 700;
         }
       }
     }
