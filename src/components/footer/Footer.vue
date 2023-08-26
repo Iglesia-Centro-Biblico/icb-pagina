@@ -1,7 +1,7 @@
 <template>
     <footer id="footer" class="icb-footer">
         <div class="icb-footer__logos">
-            <img class="icb-footer__logos-icb" src="/logo-completo-blanco.svg" height="80" alt="Logo Footer">
+            <img class="icb-footer__logos-icb" src="/logo-completo-blanco.svg" height="90" alt="Logo Footer">
             <div class="icb-footer__logos-social-media">
                 <a href="https://www.facebook.com/IglesiaUCBPdu/" target="_blank">
                     <img src="@/assets/icons/facebook.svg" width="50" height="50" alt="facebook" />
@@ -23,7 +23,7 @@
 .icb-footer {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 250px;
     background-color: $secondary;
     &__logos {
         display: flex;
@@ -32,11 +32,14 @@
         align-items: center;
         height: 100%;
         padding-bottom: 16px;
+        &-icb {
+            margin-bottom: 8px;
+        }
         &-social-media {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px;
+            gap: 16px;
             margin-top: 12px;
         }
     }
