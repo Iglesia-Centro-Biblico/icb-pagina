@@ -453,19 +453,4 @@
     padding: 66px 42px 66px;
   }
 }
-.icb--titulo {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 37px;
-  text-decoration: underline;
-  text-decoration-color: $primary;
-  text-decoration-thickness: 4px;
-  margin-bottom: 15px;
-  @include q-medium {
-    font-size: 60px;
-    line-height: 64px;
-    text-decoration-thickness: 6px;
-    margin-bottom: 25px;
-  }
-}
 </style>
