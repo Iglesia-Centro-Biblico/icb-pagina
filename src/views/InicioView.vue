@@ -11,10 +11,8 @@
       <div class="icb-visitanos__content-info">
         <h2 class="icb--titulo">Reuniones</h2>
         <h3 class="icb-visitanos__content-info-dia">Domingos</h3>
-        <h4 class="icb-visitanos__content-info-reunion">Escuela Dominical</h4>
-        <p class="icb-visitanos__content-info-hora">9:30 - 10:15 hrs</p>
         <h4 class="icb-visitanos__content-info-reunion">Culto de Adoración</h4>
-        <p class="icb-visitanos__content-info-hora">10:30 - 12:00 hrs</p>
+        <p class="icb-visitanos__content-info-hora">10:00 - 11:30 hrs</p>
       </div>
       <div class="icb-visitanos__content-info">
         <h3 class="icb-visitanos__content-info-dia">Miércoles</h3>
@@ -451,21 +449,6 @@
   }
   @include q-medium {
     padding: 66px 42px 66px;
-  }
-}
-.icb--titulo {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 37px;
-  text-decoration: underline;
-  text-decoration-color: $primary;
-  text-decoration-thickness: 4px;
-  margin-bottom: 15px;
-  @include q-medium {
-    font-size: 60px;
-    line-height: 64px;
-    text-decoration-thickness: 6px;
-    margin-bottom: 25px;
   }
 }
 </style>
