@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import InicioView from '../views/InicioView.vue'
-import ComunicacionView from '../views/ComunicacionView.vue'
+// import ComunicacionView from '../views/ComunicacionView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,11 +10,11 @@ const router = createRouter({
       name: 'inicio',
       component: InicioView,
     },
-    {
-      path: '/comunicacion',
-      name: 'comunicacion',
-      component: ComunicacionView,
-    },
+    // {
+    //   path: '/comunicacion',
+    //   name: 'comunicacion',
+    //   component: ComunicacionView,
+    // },
   ]
 })
 
