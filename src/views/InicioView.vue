@@ -68,7 +68,7 @@
     <h2 class="icb--titulo">Lideres</h2>
     <div class="lideres-container">
       <div class="lider" v-for="lider in lideres" :key="lider">
-        <img class="lider-img" :src="getImgUrl(lider.img)" :title="lider.name" >
+        <img class="lider-img" :src="lider.img" :title="lider.name" >
         <h3 class="lider-name">{{ lider.name }}</h3>
         <p class="lider-title">{{ lider.title }}</p>
       </div>
@@ -80,6 +80,9 @@
   import type { Ref } from 'vue';
   import Accordion from '@/components/accordion/Accordion.vue';
   import AccordionItem from '@/components/accordion/AccordionItem.vue';
+  import DanielThompson from '../assets/images/daniel_thompson.webp';
+  import JulioMujica from '../assets/images/julio_mujica.webp';
+  import MarioAmaral from '../assets/images/mario_amaral.webp';
 
   const redirect = (page: string) => {
     const el = document.getElementById(page);
@@ -221,20 +224,17 @@
   const lideres: any[] = [{
     name: 'Daniel Thompson',
     title: 'Pastor Iterino',
-    img: 'daniel_thompson.webp',
+    img: DanielThompson,
   }, {
     name: 'Julio Mujica',
     title: 'Diacono',
-    img: 'julio_mujica.webp',
+    img: JulioMujica,
   }, {
     name: 'Mario Amaral',
     title: 'Diacono',
-    img: 'mario_amaral.webp',
+    img: MarioAmaral,
   }];
 
-  const getImgUrl = (name:string) => {
-    return new URL(`/src/assets/images/${name}`, window.location.origin).href;
-  };
 
 </script>
 
