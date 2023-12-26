@@ -221,15 +221,15 @@
   const lideres: any[] = [{
     name: 'Daniel Thompson',
     title: 'Pastor Iterino',
-    img: '/src/assets/images/daniel_thompson.webp',
+    img: 'src/assets/images/daniel_thompson.webp',
   }, {
     name: 'Julio Mujica',
     title: 'Diacono',
-    img: '/src/assets/images/julio_mujica.webp',
+    img: 'src/assets/images/julio_mujica.webp',
   }, {
     name: 'Mario Amaral',
     title: 'Diacono',
-    img: '/src/assets/images/mario_amaral.webp',
+    img: 'src/assets/images/mario_amaral.webp',
   }];
 
 </script>
