@@ -68,7 +68,7 @@
     <h2 class="icb--titulo">Lideres</h2>
     <div class="lideres-container">
       <div class="lider" v-for="lider in lideres" :key="lider">
-        <img class="lider-img" :src="`/src/assets/images/${lider.img}`" :title="lider.name" >
+        <img class="lider-img" :src="getImgUrl(lider.img)" :title="lider.name" >
         <h3 class="lider-name">{{ lider.name }}</h3>
         <p class="lider-title">{{ lider.title }}</p>
       </div>
@@ -231,6 +231,10 @@
     title: 'Diacono',
     img: 'mario_amaral.webp',
   }];
+
+  const getImgUrl = (name:string) => {
+    return new URL(`/src/assets/images/${name}`, window.location.origin).href;
+  };
 
 </script>
 
