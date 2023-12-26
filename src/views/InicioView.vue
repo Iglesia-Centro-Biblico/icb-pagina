@@ -68,7 +68,7 @@
     <h2 class="icb--titulo">Lideres</h2>
     <div class="lideres-container">
       <div class="lider" v-for="lider in lideres" :key="lider">
-        <img class="lider-img" :src="lider.img" :title="lider.name" >
+        <img class="lider-img" :src="`/src/assets/images/${lider.img}`" :title="lider.name" >
         <h3 class="lider-name">{{ lider.name }}</h3>
         <p class="lider-title">{{ lider.title }}</p>
       </div>
@@ -221,15 +221,15 @@
   const lideres: any[] = [{
     name: 'Daniel Thompson',
     title: 'Pastor Iterino',
-    img: 'src/assets/images/daniel_thompson.webp',
+    img: 'daniel_thompson.webp',
   }, {
     name: 'Julio Mujica',
     title: 'Diacono',
-    img: 'src/assets/images/julio_mujica.webp',
+    img: 'julio_mujica.webp',
   }, {
     name: 'Mario Amaral',
     title: 'Diacono',
-    img: 'src/assets/images/mario_amaral.webp',
+    img: 'mario_amaral.webp',
   }];
 
 </script>
