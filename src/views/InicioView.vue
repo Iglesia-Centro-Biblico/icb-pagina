@@ -64,6 +64,16 @@
       </div>
     </div>
   </div>
+  <div id="lideres" class="icb-lideres">
+    <h2 class="icb--titulo">Lideres</h2>
+    <div class="lideres-container">
+      <div class="lider" v-for="lider in lideres" :key="lider">
+        <img class="lider-img" :src="'/src/assets/images/'+ lider.img" :title="lider.name" >
+        <h3 class="lider-name">{{ lider.name }}</h3>
+        <p class="lider-title">{{ lider.title }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 <script setup lang="ts">
   import { ref } from 'vue';
@@ -207,6 +217,21 @@
     ],
   }];
   const temas: any[] = DECLARACION_DE_FE.map(({ titulo }) => titulo);
+
+  const lideres: any[] = [{
+    name: 'Daniel Thompson',
+    title: 'Pastor Iterino',
+    img: 'daniel_thompson.webp',
+  }, {
+    name: 'Julio Mujica',
+    title: 'Diacono',
+    img: 'julio_mujica.webp',
+  }, {
+    name: 'Mario Amaral',
+    title: 'Diacono',
+    img: 'mario_amaral.webp',
+  }];
+
 </script>
 
 <style scoped lang="scss">
@@ -447,6 +472,54 @@
       display: grid;
     }
   }
+  @include q-medium {
+    padding: 66px 42px 66px;
+  }
+}
+
+.icb-lideres {
+  padding: 36px 24px 42px;
+  scroll-margin-top: 70px;
+
+  .lideres-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    .lider {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 36px 0 24px;
+      &-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 24px;
+      }
+      &-name {
+        color: $secondary;
+        font-weight: bold;
+        font-size: 24px;
+        padding: 0;
+        margin: 0;
+        line-height: 1.2;
+      }
+      &-title {
+        color: $primary;
+        font-weight: normal;
+        font-size: 22px;
+        padding: 0;
+        margin: 0;
+        line-height: 1;
+      }
+    }
+    @include q-medium {
+      padding: 40px 0 40px;
+    }
+  }
+
   @include q-medium {
     padding: 66px 42px 66px;
   }
