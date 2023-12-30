@@ -46,7 +46,7 @@
   let scrollPercentage: Ref<number> = ref(0);
   let installApp: Ref<any> = ref();
 
-  const pages: Ref<{ name: string, hash: string, url: string }[]> = ref([
+  const pages: Ref<{ name: string, hash?: string, url?: string }[]> = ref([
     { name: 'Inicio', hash: 'inicio' },
     { name: 'Visítanos', hash: 'visitanos' },
     { name: 'Nosotros', hash: 'nosotros' },
