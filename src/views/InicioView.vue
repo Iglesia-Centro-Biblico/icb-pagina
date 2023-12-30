@@ -65,7 +65,7 @@
     </div>
   </div>
   <div id="lideres" class="icb-lideres">
-    <h2 class="icb--titulo">Lideres</h2>
+    <h2 class="icb--titulo">Líderes</h2>
     <div class="lideres-container">
       <div class="lider" v-for="lider in lideres" :key="lider">
         <img class="lider-img" :src="lider.img" :title="lider.name" >
@@ -83,6 +83,7 @@
   import DanielThompson from '../assets/images/daniel_thompson.webp';
   import JulioMujica from '../assets/images/julio_mujica.webp';
   import MarioAmaral from '../assets/images/mario_amaral.webp';
+  import VictorRomero from '../assets/images/victor_romero.webp';
 
   const redirect = (page: string) => {
     const el = document.getElementById(page);
@@ -130,7 +131,7 @@
         { id: '4.', child: 2, text: 'Vendrá después para reinar mil años en la tierra. (Is. 11:1-16;  Apoc.20:4-6)' },
     ],
   }, {
-    titulo: 'El Espiritu Santo',
+    titulo: 'El Espíritu Santo',
     explicacion: [
         { id: 'A.', text: 'Es una persona. La tercera persona de la Trinidad. (Hch. 5:3-4; 9:32; 13:2-4; 16:6-7)' },
         { id: 'B.', text: 'Vino el día de Pentecostés para morar en todo creyente para siempre. (Hch.1:4-5; 8; 2:1-4; Jn. 14:16-17; 1 Cor. 3:16; 6:19-20; Rom. 8:9-17)' },
@@ -205,7 +206,7 @@
 
     ],
   }, {
-    titulo: 'Escatologia',
+    titulo: 'Escatología',
     explicacion: [
         { text: 'Sostenemos por la fe el Pre-milenialismo y Pre-tribulacionismo. Quiere decir que nuestra reunión con Cristo ha de ocurrir antes del período que en la Biblia se conoce como de tribulación, de ira y de prueba que vendrá sobre el mundo entero. Será en las nubes como lo dice 1 Tes. 4:17, donde los muertos en Cristo resucitarán primero y luego los santos vivos arrebatados, para compadecer ante el tribunal de Cristo y recibir según lo que hayamos hecho mientras estuvimos en el cuerpo. Posteriormente la Iglesia de Cristo celebrará como esposa las bodas del Cordero y finalmente descenderá con Cristo como Rey, para reinar sobre la tierra por mil años. Esto ocurrirá al fin de los siete años de tribulación y será la inauguración del Reino milenial, y cuyo final será el estado Eterno. (1 Tes. 4:14-17; Jn. 14:1-3; Apoc. 20:1-6; 3:10; 2 Cor. 5:10: 1 Cor. 15:50-53)' },
     ],
@@ -233,6 +234,10 @@
     name: 'Mario Amaral',
     title: 'Diacono',
     img: MarioAmaral,
+  }, {
+    name: 'Victor Romero',
+    title: 'Secretario',
+    img: VictorRomero,
   }];
 
 
