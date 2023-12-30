@@ -11,7 +11,10 @@
     </div>
     <nav class="icb-navbar__nav">
       <ul class="icb-navbar__nav-list">
-        <li v-for="page in pages" :key="page.name" @click="redirect(page.hash)">{{ page.name }}</li>
+        <li v-for="page in pages" :key="page.name" @click="page.hash && redirect(page.hash)">
+          <a v-if="page.url" :href="page.url">{{ page.name }}</a>
+          <span v-else>{{ page.name }}</span>
+        </li>
         <li v-if="installApp" class="install-button" @click="install">
           <img src="@/assets/icons/install-icon.svg" alt="install icon"> Instalar
         </li>
@@ -21,7 +24,7 @@
   <div :class="['icb-mobile-menu', { 'is-open': isOpen }]">
     <ul class="icb-mobile-menu__list">
       <li v-for="page in pages" :key="`mobile-${page.name}`">
-        <a @click="redirect(page.hash, 'toggle')">{{  page.name  }}</a>
+        <a @click="page.hash && redirect(page.hash, 'toggle')" :href="page.url">{{  page.name  }}</a>
       </li>
       <li v-if="installApp" class="install-button" @click="install">
         <img src="@/assets/icons/install-icon.svg" alt="install icon"> Instalar
@@ -43,11 +46,12 @@
   let scrollPercentage: Ref<number> = ref(0);
   let installApp: Ref<any> = ref();
 
-  const pages: Ref<{ name: string, hash: string }[]> = ref([
+  const pages: Ref<{ name: string, hash: string, url: string }[]> = ref([
     { name: 'Inicio', hash: 'inicio' },
     { name: 'Visítanos', hash: 'visitanos' },
     { name: 'Nosotros', hash: 'nosotros' },
     { name: 'Contacto', hash: 'footer' },
+    { name: 'Campamento', url: 'https://ucburuguay.wixsite.com/campamento' }
   ]);
 
   const toggle = () => {
@@ -144,8 +148,8 @@
   }
   &.has-scrolled {
     background-color: $secondary;
-    #{ $self }__nav {
-      li {
+    #{ $self }__nav  {
+      li span, li a {
         color: $white;
       }
     }
@@ -237,12 +241,13 @@
       display: flex;
     }
 
-    li {
+    li span, li a {
       font-size: 24px;
       line-height: 26.4px;
       font-weight: 600;
       color: $secondary;
       cursor: pointer;
+      text-decoration: none;
     }
   }
 }
