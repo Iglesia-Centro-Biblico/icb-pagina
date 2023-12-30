@@ -65,7 +65,7 @@
     </div>
   </div>
   <div id="lideres" class="icb-lideres">
-    <h2 class="icb--titulo">Líderes</h2>
+    <h2 class="icb--titulo">Nuestros Líderes</h2>
     <div class="lideres-container">
       <div class="lider" v-for="lider in lideres" :key="lider">
         <img class="lider-img" :src="lider.img" :title="lider.name" >
