@@ -1,9 +1,9 @@
 <template>
   <div :class="['icb-navbar', { 'has-scrolled': hasScrolled, 'is-open': isOpen }]">
     <div class="icb-navbar__progress-bar" :style="{ width: `${scrollPercentage}%` }"></div>
-    <img class="icb-navbar__logo icb-logo" src="/logo.svg" height="32" width="32" alt="Logo" @click.prevent.stop="redirect('inicio')">
-    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco icb-logo" src="/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco"  @click.prevent.stop="redirect('inicio')">
-    <img v-else class="icb-navbar__logo-completo icb-logo" src="/logo-completo.svg" height="50" alt="Logo Completo"  @click.prevent.stop="redirect('inicio')">
+    <img class="icb-navbar__logo icb-logo" src="/logo.svg" height="32" width="32" alt="Logo" @click.prevent.stop="goTo('/')">
+    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco icb-logo" src="/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco"  @click.prevent.stop="goTo('/')">
+    <img v-else class="icb-navbar__logo-completo icb-logo" src="/logo-completo.svg" height="50" alt="Logo Completo"  @click.prevent.stop="goTo('/')">
     <div :class="['icb-navbar__menu', { 'is-open': isOpen }]" @click="toggle">
       <div class="icb-navbar__menu-line"></div>
       <div class="icb-navbar__menu-line"></div>
@@ -34,6 +34,8 @@
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted } from 'vue';
   import type { Ref } from 'vue';
+  import { useRouter } from 'vue-router';
+  const router = useRouter();
   const emit = defineEmits(['expanded']);
   
   let isOpen: Ref<boolean> = ref(false);
@@ -52,6 +54,7 @@
     isOpen.value = !isOpen.value;
     emit('expanded', isOpen.value);
   };
+  const goTo = (path: string) : any => router.push({ path });
   const redirect = (page: string, option?: string) : void  => {
     const el = document.getElementById(page);
     if (el) {
