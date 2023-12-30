@@ -234,10 +234,6 @@
     name: 'Mario Amaral',
     title: 'Diacono',
     img: MarioAmaral,
-  }, {
-    name: 'Victor Romero',
-    title: 'Secretario',
-    img: VictorRomero,
   }];
 
 
