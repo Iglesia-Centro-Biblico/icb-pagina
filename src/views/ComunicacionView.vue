@@ -19,12 +19,12 @@
     <div class="comunicacion__logos">
       <h2 class="icb--titulo">Logos</h2>
       <div class="comunicacion__logos-container">
-        <div v-for="logo in logos" :key="logo.title" class="comunicacion__logos-item" :class="['comunicacion__logos-item', { 'is-column': logo.column }]" :style="{ background: logo.background }">
-          <div class="comunicacion__logos-item-sample">
+        <div v-for="logo in logos" :key="logo.title" class="comunicacion__logos-item" :class="['comunicacion__logos-item', { 'is-column': logo.column }]">
+          <div class="comunicacion__logos-item-sample" :style="{ background: logo.background }">
             <img :src="getFile(logo.sample.src).href" :alt="logo.title" :width="logo.sample.width">
           </div>
           <div class="comunicacion__logos-item-info">
-            <h3 :style="{ color: logo.fontColor || '#2C3135' }">{{ logo.title }}</h3>
+            <h3>{{ logo.title }}</h3>
             <a 
               v-for="item in logo.options" 
               :key="logo.title+'-'+item.type" 
@@ -40,12 +40,12 @@
     <div class="comunicacion__qrs">
       <h2 class="icb--titulo">Codigos QR</h2>
       <div class="comunicacion__qrs-container">
-        <div v-for="qr in qrs" :key="qr.title" class="comunicacion__qrs-item" :class="['comunicacion__qrs-item', { 'is-column': qr.column }]" :style="{ background: qr.background }">
-          <div class="comunicacion__qrs-item-sample">
+        <div v-for="qr in qrs" :key="qr.title" class="comunicacion__qrs-item" :class="['comunicacion__qrs-item', { 'is-column': qr.column }]">
+          <div class="comunicacion__qrs-item-sample" :style="{ background: qr.background }">
             <img :src="getFile(qr.sample.src).href" :alt="qr.title" :width="qr.sample.width">
           </div>
           <div class="comunicacion__qrs-item-info">
-            <h3 :style="{ color: qr.fontColor || '#2C3135' }">{{ qr.title }}</h3>
+            <h3>{{ qr.title }}</h3>
             <a 
               v-for="item in qr.options" 
               :key="qr.title+'-'+item.type" 
@@ -164,28 +164,28 @@ const logos: any = [
 
 const qrs: any = [
   {
-    title: 'QR Página Web Primario',
+    title: 'Página Web Primario',
     sample: { src: 'qr-codes/qr-pagina.svg', width: '90' },
     options: [
       { type: 'SVG', href: 'qr-codes/qr-pagina.svg' },
     ],
   },
   {
-    title: 'QR Página Web Negro',
+    title: 'Página Web Negro',
     sample: { src: 'qr-codes/qr-pagina-negro.svg', width: '90' },
     options: [
       { type: 'SVG', href: 'qr-codes/qr-pagina-negro.svg' },
     ],
   },
   {
-    title: 'QR Página Web Azul',
+    title: 'Página Web Azul',
     sample: { src: 'qr-codes/qr-pagina-azul.svg', width: '90' },
     options: [
       { type: 'SVG', href: 'qr-codes/qr-pagina-azul.svg' },
     ],
   },
   {
-    title: 'QR Página Web Blanco',
+    title: 'Página Web Blanco',
     sample: { src: 'qr-codes/qr-pagina-blanco.svg', width: '90' },
     fontColor: '#fff',
     background: '#2C3135',
@@ -296,8 +296,6 @@ const download = (href:string, title:string) => {
       gap: 8px;
     }
     &-item {
-        padding: 18px 24px;
-        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: flex-start;
@@ -308,8 +306,12 @@ const download = (href:string, title:string) => {
           align-items: flex-start;
           gap: 0px;
         }
+        &-sample {
+          padding: 8px 12px;
+          border-radius: 8px;
+          margin-right: 8px;
+        }
         &-info {
-          margin-left: 12px;
           h3 {
             font-weight: 700;
           }
