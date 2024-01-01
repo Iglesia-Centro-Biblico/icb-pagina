@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import InicioView from '../views/InicioView.vue'
-// import ComunicacionView from '../views/ComunicacionView.vue'
+import ComunicacionView from '../views/ComunicacionView.vue'
 import NotFound from '../views/NotFound.vue'
 
 const router = createRouter({
@@ -11,11 +11,11 @@ const router = createRouter({
       name: 'inicio',
       component: InicioView,
     },
-    // {
-    //   path: '/comunicacion',
-    //   name: 'comunicacion',
-    //   component: ComunicacionView,
-    // },
+    {
+      path: '/comunicacion',
+      name: 'comunicacion',
+      component: ComunicacionView,
+    },
     {
       path: '/:notFound',
       component: NotFound,

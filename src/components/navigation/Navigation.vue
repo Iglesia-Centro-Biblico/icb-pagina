@@ -1,8 +1,8 @@
 <template>
-  <div :class="['icb-navbar', { 'has-scrolled': hasScrolled, 'is-open': isOpen }]">
+  <div :class="['icb-navbar', { 'has-scrolled': hasScrolled || !isHomePage, 'is-open': isOpen }]">
     <div class="icb-navbar__progress-bar" :style="{ width: `${scrollPercentage}%` }"></div>
     <img class="icb-navbar__logo icb-logo" src="/logo.svg" height="32" width="32" alt="Logo" @click.prevent.stop="goTo('/')">
-    <img v-if="hasScrolled" class="icb-navbar__logo-completo-blanco icb-logo" src="/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco"  @click.prevent.stop="goTo('/')">
+    <img v-if="hasScrolled || !isHomePage" class="icb-navbar__logo-completo-blanco icb-logo" src="/logo-completo-blanco.svg" height="50" alt="Logo Completo blanco"  @click.prevent.stop="goTo('/')">
     <img v-else class="icb-navbar__logo-completo icb-logo" src="/logo-completo.svg" height="50" alt="Logo Completo"  @click.prevent.stop="goTo('/')">
     <div :class="['icb-navbar__menu', { 'is-open': isOpen }]" @click="toggle">
       <div class="icb-navbar__menu-line"></div>
@@ -35,9 +35,10 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted, onUnmounted } from 'vue';
+  import { ref, computed, onMounted, onUnmounted } from 'vue';
   import type { Ref } from 'vue';
-  import { useRouter } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
+  const route = useRoute();
   const router = useRouter();
   const emit = defineEmits(['expanded']);
   
@@ -92,6 +93,7 @@
     installApp.value = e;
   };  
 
+  const isHomePage = computed<boolean>(() => route.path === '/');
   defineExpose({ toggle }); 
   onMounted(() => {
     window.addEventListener('scroll', scrollHandler);

@@ -83,7 +83,6 @@
   import DanielThompson from '../assets/images/daniel_thompson.webp';
   import JulioMujica from '../assets/images/julio_mujica.webp';
   import MarioAmaral from '../assets/images/mario_amaral.webp';
-  import VictorRomero from '../assets/images/victor_romero.webp';
 
   const redirect = (page: string) => {
     const el = document.getElementById(page);

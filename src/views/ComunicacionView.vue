@@ -1,5 +1,8 @@
 <template>
   <div class="comunicacion">
+    <div class="comunicacion__titulo">
+      <h1>Comunicación</h1>
+    </div>
     <div class="comunicacion__colores">
       <h2 class="icb--titulo">Colores</h2>
       <div v-for="color in colors" :key="color.title" class="comunicacion__colores-item">
@@ -12,17 +15,17 @@
     </div>
     <div class="comunicacion__logos">
       <h2 class="icb--titulo">Logos</h2>
-      <div v-for="logo in logos" :key="logo.title" class="comunicacion__logos-item">
+      <div v-for="logo in logos" :key="logo.title" class="comunicacion__logos-item" :style="{ background: logo.background }">
         <div class="comunicacion__logos-item-sample">
-          <img :src="logo.sample.src" :alt="logo.title" :width="logo.sample.width">
+          <img :src="getLogo(logo.sample.src).href" :alt="logo.title" :width="logo.sample.width">
         </div>
         <div class="comunicacion__logos-item-info">
-          <h3>{{ logo.title }}</h3>
+          <h3 :style="{ color: logo.fontColor || '#2C3135' }">{{ logo.title }}</h3>
           <a 
             v-for="item in logo.options" 
             :key="logo.title+'-'+item.type" 
-            :href="item.href"
-            :download="logo.title"
+            href="#"
+            @click="download(item.href, logo.title)"
             >
               {{ item.type }}
             </a>
@@ -64,38 +67,72 @@ const colors: any = [
 const logos: any = [
   {
     title: 'Logo Primario',
-    sample: { src: '/logo.svg', width: '90' },
+    sample: { src: 'logo.svg', width: '90' },
     options: [
-      { type: 'SVG', href: '/logo.svg' },
-      { type: 'PNG', href: '/logo.png' },
-      { type: 'PDF', href: '/logo.pdf' },
+      { type: 'SVG', href: 'logo.svg' },
+      { type: 'PNG', href: 'logo.png' },
+      { type: 'JPG', href: 'logo.jpg' },
     ],
   },
   {
     title: 'Logo Negro',
-    sample: { src: '/logo.svg', width: '90' },
+    sample: { src: 'logo-negro.svg', width: '90' },
     options: [
-      { type: 'SVG', href: '/logo.svg' },
-      { type: 'PNG', href: '/logo.png' },
-      { type: 'PDF', href: '/logo.pdf' },
+      { type: 'SVG', href: 'logo-negro.svg' },
+      { type: 'PNG', href: 'logo-negro.png' },
+      { type: 'JPG', href: 'logo-negro.jpg' },
     ],
   },
   {
     title: 'Logo Blanco',
-    sample: { src: '/logo.svg', width: '90' },
+    sample: { src: 'logo-blanco.svg', width: '90' },
+    fontColor: '#fff',
+    background: '#2C3135',
     options: [
-      { type: 'SVG', href: '/logo.svg' },
-      { type: 'PNG', href: '/logo.png' },
-      { type: 'PDF', href: '/logo.pdf' },
+      { type: 'SVG', href: 'logo-blanco.svg' },
+      { type: 'PNG', href: 'logo-blanco.png' },
+      { type: 'JPG', href: 'logo-blanco.jpg' },
     ],
   },
 ];
+
+const getLogo = (href:string) => new URL(`../assets/logos/${href}`, import.meta.url);
+const download = (href:string, title:string) => {
+  // Create a link element
+  const link = document.createElement('a');
+
+  // Set the download attribute and href for the link
+  link.download = title;
+  link.href = getLogo(href).href;
+
+  // Append the link to the document
+  document.body.appendChild(link);
+
+  // Trigger a click on the link to start the download
+  link.click();
+
+  // Remove the link from the document
+  document.body.removeChild(link);
+};
 </script>
 
 <style lang="scss">
 .comunicacion {
-  padding: 60px 5px 80px;
+  padding: 48px 0 80px;
+  &__titulo {
+    padding: 0 12px;
+    margin: 0 0 12px;
+    background-color: $primary;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    h1 {
+      color: white;
+      font-weight: bold;
+    }
+  }
   &__colores {
+    padding: 0 12px 24px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -128,10 +165,13 @@ const logos: any = [
     }
   }
   &__logos {
+    padding: 0 12px 16px;
     display: flex;
     flex-direction: column;
     gap: 8px;
     &-item {
+      padding: 18px 12px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
@@ -142,6 +182,7 @@ const logos: any = [
         width: 90px;
       }
       &-info {
+        margin-left: 12px;
         h3 {
           font-weight: 700;
         }
