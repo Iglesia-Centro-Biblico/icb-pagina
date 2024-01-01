@@ -219,6 +219,9 @@ const download = (href:string, title:string) => {
 <style lang="scss">
 .comunicacion {
   padding: 48px 0 80px;
+  @include q-medium {
+    padding-top: 80px;
+  }
   &__titulo {
     padding: 0 12px;
     margin: 0 0 12px;
@@ -231,9 +234,20 @@ const download = (href:string, title:string) => {
       color: white;
       font-weight: bold;
     }
+    @include q-medium {
+      padding: 0 24px;
+      margin-bottom: 36px;
+      h1 {
+        font-size: 48px;
+      }
+    }
   }
   &__colores {
     padding: 0 12px 36px;
+
+    @include q-medium {
+      padding: 0 24px 48px;
+    }
     
     &-container {
       display: flex;
@@ -271,6 +285,11 @@ const download = (href:string, title:string) => {
   }
   &__logos, &__qrs {
     padding: 0 12px 36px;
+
+    @include q-medium {
+      padding: 0 24px 48px;
+    }
+
     &-container {
       display: flex;
       flex-wrap: wrap;
