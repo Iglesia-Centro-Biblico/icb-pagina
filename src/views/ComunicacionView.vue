@@ -1,7 +1,7 @@
 <template>
   <div class="comunicacion">
     <div class="comunicacion__titulo">
-      <h1>Comunicación</h1>
+      <h1>Recursos para medios de comunicación</h1>
     </div>
     <div class="comunicacion__colores">
       <h2 class="icb--titulo">Colores</h2>
@@ -224,6 +224,7 @@ const download = (href:string, title:string) => {
     height: 200px;
     display: flex;
     align-items: center;
+    line-height: 1.2;
     h1 {
       color: white;
       font-weight: bold;
