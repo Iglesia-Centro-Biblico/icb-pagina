@@ -7,7 +7,8 @@
       <h2 class="icb--titulo">Colores</h2>
       <div class="comunicacion__colores-container">
         <div v-for="color in colors" :key="color.title" class="comunicacion__colores-item">
-          <div class="comunicacion__colores-item-sample" :style="{ backgroundColor: color.sample }"></div>
+          <div class="comunicacion__colores-item-sample" :style="{ backgroundColor: color.sample }" title="Click Para Copiar" @click.prevent="copy(color.sample)">
+          </div>
           <div class="comunicacion__colores-item-info">
             <h3>{{ color.title }}</h3>
             <p v-for="item in color.info" :key="item.format+'-'+item.color"><span>{{ item.format }}:</span> {{ item.color }}</p>
@@ -194,6 +195,7 @@ const qrs: any = [
   },
 ];
 
+const copy = async (text:string) => await navigator.clipboard.writeText(text);
 const getFile = (href:string) => new URL(`../assets/${href}`, import.meta.url);
 const download = (href:string, title:string) => {
   // Create a link element
@@ -247,6 +249,7 @@ const download = (href:string, title:string) => {
         content: '';
         height: 90px;
         width: 90px;
+        cursor: pointer;
         -webkit-box-shadow: 0px 14px 47px 0px rgba(0,0,0,0.35);
         -moz-box-shadow: 0px 14px 47px 0px rgba(0,0,0,0.35);
         box-shadow: 0px 14px 47px 0px rgba(0,0,0,0.35);
