@@ -57,7 +57,6 @@
     }
     @include q-medium {
         height: 450px;
-        bottom: 16px;
         &__logos {
             flex-direction: row;
             justify-content: space-around;
