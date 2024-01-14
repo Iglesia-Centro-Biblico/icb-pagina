@@ -28,17 +28,12 @@
     <div class="icb-direccion__content">
       <div class="icb-direcction__content-info">
         <h2 class="icb--titulo" style="color: white">Dirección</h2>
-        <p class="icb-direccion__content-info-p">La Iglesia Centro Bíblico se encuentra en <span>Charruas 726 entre Libertad y Silvan Fernandez</span></p>
+        <p class="icb-direccion__content-info-p">La Iglesia Centro Bíblico se encuentra en <a href="https://www.maps.app.goo.gl/J5VNnmVw5DeLRco69" target="_blank" title="Dirección de la iglesia">Charruas 726 entre Libertad y Silvan Fernandez</a></p>
       </div>
       <div class="icb-direccion__content-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1012.1161327963868!2d-58.091899490268574!3d-32.313040798415656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95afcb32b7421717%3A0x8240c8cd0d1ba138!2sIglesia%20Centro%20B%C3%ADblico%20Paysand%C3%BA!5e0!3m2!1sen!2suy!4v1691864732778!5m2!1sen!2suy"
-          width="320"
-          height="200"
-          style="border:0;"
-          loading="lazy"
-          >
-        </iframe>
+        <a href="https://www.maps.app.goo.gl/J5VNnmVw5DeLRco69" target="_blank" title="Dirección de la iglesia">
+          <img src="../assets/images/mapa.webp" width="100" />
+        </a>
       </div>
     </div>
   </div>
@@ -365,21 +360,16 @@
       font-weight: 400;
       line-height: 18px;
       margin-bottom: 18px;
-      span {
+      a {
         color: $primary;
         font-weight: 500;
+        text-decoration: none;
       }
     }
     }
     &-map {
-      position: relative;
-      padding-bottom: 70%;
-      iframe {
-        height: 100%;
+      img {
         width: 100%;
-        left: 0;
-        top: 0;
-        position: absolute;
       }
     }
   }
