@@ -28,10 +28,10 @@
     <div class="icb-direccion__content">
       <div class="icb-direcction__content-info">
         <h2 class="icb--titulo" style="color: white">Dirección</h2>
-        <p class="icb-direccion__content-info-p">La Iglesia Centro Bíblico se encuentra en <a href="https://www.maps.app.goo.gl/J5VNnmVw5DeLRco69" target="_blank" title="Dirección de la iglesia">Charruas 726 entre Libertad y Silvan Fernandez</a></p>
+        <p class="icb-direccion__content-info-p">La Iglesia Centro Bíblico se encuentra en <a href="#" @click="goTo(mapUrl)" target="_blank" title="Dirección de la iglesia">Charruas 726 entre Libertad y Silvan Fernandez</a></p>
       </div>
       <div class="icb-direccion__content-map">
-        <a href="https://www.maps.app.goo.gl/J5VNnmVw5DeLRco69" target="_blank" title="Dirección de la iglesia">
+        <a href="#" @click.prevent="goTo(mapUrl)" target="_blank" title="Dirección de la iglesia">
           <img src="../assets/images/mapa.webp" width="100" />
         </a>
       </div>
@@ -230,6 +230,8 @@
     img: MarioAmaral,
   }];
 
+  const mapUrl = 'https://www.google.com/maps/dir//Iglesia+Centro+B%C3%ADblico+Paysand%C3%BA,+Charruas+726,+60000+Paysand%C3%BA,+Departamento+de+Paysand%C3%BA/@-32.3132204,-58.0914213,18z';
+  const goTo = (url: any) => window.location.assign(url);
 
 </script>
 
