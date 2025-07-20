@@ -223,7 +223,7 @@
     title: 'Pastor Iterino',
     img: DanielThompson,
   }, {
-    name: 'Jose Herrera',
+    name: 'José Herrera',
     title: 'Diacono',
     img: JoseHerrera,
   }, {
