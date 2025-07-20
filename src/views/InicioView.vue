@@ -78,8 +78,8 @@
   import Accordion from '@/components/accordion/Accordion.vue';
   import AccordionItem from '@/components/accordion/AccordionItem.vue';
   import DanielThompson from '../assets/images/daniel_thompson.webp';
-  import JulioMujica from '../assets/images/julio_mujica.webp';
-  import MarioAmaral from '../assets/images/mario_amaral.webp';
+  import JoseHerrera from '../assets/images/jose_herrera.webp';
+  import PabloAlza from '../assets/images/pablo_alza.webp';
 
   const redirect = (page: string) => {
     const el = document.getElementById(page);
@@ -223,13 +223,13 @@
     title: 'Pastor Iterino',
     img: DanielThompson,
   }, {
-    name: 'Julio Mujica',
+    name: 'Jose Herrera',
     title: 'Diacono',
-    img: JulioMujica,
+    img: JoseHerrera,
   }, {
-    name: 'Mario Amaral',
+    name: 'Pablo Alza',
     title: 'Diacono',
-    img: MarioAmaral,
+    img: PabloAlza,
   }];
 
   const mapUrl = 'https://www.google.com/maps/dir//Iglesia+Centro+B%C3%ADblico+Paysand%C3%BA,+Charruas+726,+60000+Paysand%C3%BA,+Departamento+de+Paysand%C3%BA/@-32.3132204,-58.0914213,18z';
