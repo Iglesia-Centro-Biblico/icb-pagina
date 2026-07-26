@@ -13,7 +13,8 @@
       <ul class="icb-navbar__nav-list">
         <li v-for="page in pages" :key="page.name" @click="page.hash && redirect(page.hash)">
           <a v-if="page.url" :href="page.url">{{ page.name }}</a>
-          <span v-else>{{ page.name }}</span>
+          <span v-else-if="!page.children">{{ page.name }}</span>
+          <NavDropdown v-else :label="page.name" :items="page.children" :scrolled="hasScrolled || !isHomePage" />
         </li>
         <li v-if="installApp" class="install-button" @click="install">
           <img src="@/assets/icons/install-icon.svg" alt="install icon"> Instalar
@@ -24,7 +25,18 @@
   <div :class="['icb-mobile-menu', { 'is-open': isOpen }]">
     <ul class="icb-mobile-menu__list">
       <li v-for="page in pages" :key="`mobile-${page.name}`">
-        <a @click="page.hash && redirect(page.hash, 'toggle')" :href="page.url">{{  page.name  }}</a>
+        <a v-if="!page.children" @click="page.hash && redirect(page.hash, 'toggle')" :href="page.url">{{ page.name }}</a>
+        <div v-else class="icb-mobile-dropdown">
+          <span class="icb-mobile-dropdown__trigger" @click="toggleMobileDropdown(page.name)">
+            {{ page.name }}
+            <span class="icb-mobile-dropdown__arrow" :class="{ 'is-open': mobileDropdownOpen === page.name }">&#8250;</span>
+          </span>
+          <ul v-show="mobileDropdownOpen === page.name" class="icb-mobile-dropdown__menu">
+            <li v-for="child in page.children" :key="child.name">
+              <a :href="child.url" target="_blank" rel="noopener">{{ child.name }}</a>
+            </li>
+          </ul>
+        </div>
       </li>
       <li v-if="installApp" class="install-button" @click="install">
         <img src="@/assets/icons/install-icon.svg" alt="install icon"> Instalar
@@ -38,6 +50,7 @@
   import { ref, computed, onMounted, onUnmounted } from 'vue';
   import type { Ref } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
+  import NavDropdown from './NavDropdown.vue';
   const route = useRoute();
   const router = useRouter();
   const emit = defineEmits(['expanded']);
@@ -46,14 +59,22 @@
   let hasScrolled: Ref<boolean> = ref(false);
   let scrollPercentage: Ref<number> = ref(0);
   let installApp: Ref<any> = ref();
+  let mobileDropdownOpen: Ref<string | null> = ref(null);
 
-  const pages: Ref<{ name: string, hash?: string, url?: string }[]> = ref([
+  const pages: Ref<{ name: string, hash?: string, url?: string, children?: { name: string, url: string }[] }[]> = ref([
     { name: 'Inicio', hash: 'inicio' },
     { name: 'Visítanos', hash: 'visitanos' },
     { name: 'Nosotros', hash: 'nosotros' },
+    { name: 'Ministerios', children: [
+      { name: 'Adoración', url: 'https://pabloalza360.wixsite.com/ministerio-de-alaban' },
+      { name: 'Campamento', url: 'https://ucburuguay.wixsite.com/campamento' },
+    ]},
     { name: 'Contacto', hash: 'footer' },
-    { name: 'Campamento', url: 'https://ucburuguay.wixsite.com/campamento' }
   ]);
+
+  const toggleMobileDropdown = (name: string) => {
+    mobileDropdownOpen.value = mobileDropdownOpen.value === name ? null : name;
+  };
 
   const toggle = () => {
     isOpen.value = !isOpen.value;
@@ -296,6 +317,60 @@
   @include q-large {
     display: none;
     transform: translateX(0) !important;
+  }
+}
+
+// Mobile dropdown
+.icb-mobile-dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  &__trigger {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 600;
+    color: $white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__arrow {
+    display: inline-block;
+    font-size: 24px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+
+    &.is-open {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 8px;
+
+    li {
+      margin: 0 0 10px 0;
+
+      a {
+        font-size: 22px;
+        line-height: 28px;
+        font-weight: 600;
+        color: $white;
+        text-decoration: none;
+        opacity: 0.85;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
   }
 }
 </style>
